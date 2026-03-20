@@ -12,6 +12,7 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - **Build**: None required - just push and deploy.
 
 ## Quick Links
+- [MUSIC_GUIDE.md](./MUSIC_GUIDE.md) - **Add / update tracks** (`assets/music/` + `scan-music.mjs --apply`)
 - [CHANGELOG.md](./CHANGELOG.md) - Version history and features
 - [ARCHITECTURE.md](./ARCHITECTURE.md) - Technical structure and design system
 - [SBOM.md](./SBOM.md) - Assets and security verification
@@ -20,7 +21,7 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - [My_Thoughts.md](./My_Thoughts.md) - Internal developer reflections
 
 ## Current Status
-- **Version**: **v1.2.0** (2026-03-20) — music = `js/music-files.js` only
+- **Version**: **v1.2.1** (2026-03-20) — MUSIC_GUIDE + doc cross-links
 - **Health**: ✅ Stable
 - **Next Milestone**: Content Expansion
 

@@ -49,7 +49,7 @@ Use sparingly; types and clear names beat comments.
 
 The section **JavaScript (`script.js`)** above still describes naming and discipline; read “the bundle” as the combined `js/*.js` surface, not a single file.
 
-**Music [2026-03-20]:** Edit `js/music-files.js` only (`MY_MUSIC_FILES`, optional `MY_MUSIC_TITLES`). Optional: `node tools/scan-music.mjs` to print filenames.
+**Music [2026-03-20]:** Full workflow, tables, and troubleshooting → **[MUSIC_GUIDE.md](./MUSIC_GUIDE.md)**. In code: `js/music-files.js` (`MY_MUSIC_FILES` between markers, optional `MY_MUSIC_TITLES` / `MY_EP_FILES`); refresh list with `node tools/scan-music.mjs --apply`.
 
 ## Documentation (`DOCS/`)
 

@@ -2,7 +2,14 @@
 
 # Nate's Space - Scratchpad
 
-## Current Session: 2026-03-20 (Generated music catalog)
+## Current Session: 2026-03-20 (MUSIC_GUIDE + doc sweep)
+
+### Last actions
+- [x] Added **DOCS/MUSIC_GUIDE.md**; linked from README, SUMMARY, ARCHITECTURE, SBOM, STYLE_GUIDE; fixed stale music references in ARCHITECTURE; version **v1.2.1**.
+
+---
+
+## Session: 2026-03-20 (Generated music catalog)
 
 ### Last actions
 - [x] `music-catalog.generated.js` from `assets/music/` via `scan-music.mjs --write`; `music-catalog-merge.js` + `epTrackSrcs` / `musicTrackOverrides` in `data.js`.

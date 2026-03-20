@@ -10,20 +10,20 @@ Nate's Space is a static personal portfolio/social-style website built with vani
 ```
 NatesSpace/
 ├── index.html          # Feed shell; modals; EP player DOM; composer
-├── music.html          # Full music library (all `musicCatalog` tracks + dedicated player)
+├── music.html          # Full music library (all `MY_MUSIC_FILES` + dock player; see MUSIC_GUIDE.md)
 ├── styles.css          # Themes, glass UI, responsive, animations
-├── js/                 # Runtime modules (music list lives in `assets/data.js` markers; see tools/)
+├── js/                 # Runtime modules; **`music-files.js`** = track list for feed + music.html
 ├── .nojekyll           # Prevents Jekyll processing on GitHub Pages
 ├── .gitignore          # Ignores node_modules, *.wav, *.exe, etc.
 ├── assets/
 │   ├── data.js         # NatesData: gallery `images`, `posts` (not music)
 │   ├── *.jpg, *.mp4    # Media (paths referenced from HTML/data.js)
-│   └── music/          # All tracks (mp3/m4a/…); listed in `musicCatalog`
+│   └── music/          # Audio files; filenames synced into `js/music-files.js` via scan (see MUSIC_GUIDE.md)
 ├── tools/
 │   ├── convert.js      # (Dev) CommonJS HEIC → JPG using heic-convert
 │   ├── convert.mjs     # (Dev) ESM variant
 │   ├── convert_audio.bat # (Dev) WAV → M4A helper for local encoding
-│   └── scan-music.mjs  # (Dev) prints filenames for `MY_MUSIC_FILES` in `js/music-files.js`
+│   └── scan-music.mjs  # (Dev) `node tools/scan-music.mjs --apply` patches `MY_MUSIC_FILES` block
 ├── README.md
 └── DOCS/
     ├── ARCHITECTURE.md
@@ -65,13 +65,14 @@ NatesSpace/
 8. **Music Player**:
    - Desktop: Sidebar mini-player + Apple Music Modal.
    - Mobile: Persistent bottom bar (Spotify-style) with expanded tracklist view.
+   - **Data source:** `js/music-files.js` (`MY_MUSIC_FILES`, optional `MY_MUSIC_TITLES`, `MY_EP_FILES`). Feed EP uses `getEpMusicRows()`; full library uses [`music.html`](../music.html) + `getAllMusicRows()`. Details: [MUSIC_GUIDE.md](./MUSIC_GUIDE.md).
 9. **Toast stack** - `#toastContainer` for Save/Share feedback.
 
 ### Layout & Logic
 - **Layout Toggles**: Desktop supports swapping sidebars or entering "Focus" mode (centered feed).
 - **Responsive Logic**: Media queries handle the transition from a 2-column desktop layout to a 1-column mobile stack. Mobile hides the layout toggle as it's not applicable.
-- **Cache Busting**: Manual query string on `styles.css` and each `js/*.js` in `index.html` / `music.html` (currently `?v=114`) so updates beat CDN/browser caches.
-- **Feed pipeline**: `index.html` loads `assets/data.js` (defines `NatesData`), then `js/app-init.js` calls `renderPlaylist()` and `renderPosts()`. Static `article.post` nodes are no longer shipped; the feed is entirely data-driven when `NatesData` is present.
+- **Cache Busting**: Manual query string on `styles.css` and each `js/*.js` in `index.html` / `music.html` (e.g. `?v=121` — bump when shipping asset changes) so updates beat CDN/browser caches.
+- **Feed pipeline**: `index.html` loads `assets/data.js` (`NatesData`) and **`js/music-files.js`** (tracks), then `js/app-init.js` calls `renderPlaylist()` and `renderPosts()`. Posts are data-driven from `NatesData.posts`; music list is **not** in `data.js`.
 
 ### JavaScript modules (`js/`) — load order [added 2026-03-20]
 
@@ -84,7 +85,7 @@ NatesSpace/
 | `scroll-reveal.js` | `window.revealObserver` + initial observe on gallery/friends |
 | `music-files.js` | `MY_MUSIC_FILES` + `getAllMusicRows()` / `getEpMusicRows()` |
 | `playlist.js` | `renderPlaylist()` — EP rows from `getEpMusicRows()` |
-| `music-page.js` | `music.html` only: full merged catalog + `#libraryAudio` dock player |
+| `music-page.js` | `music.html` only: list from `getAllMusicRows()` + `#libraryAudio` dock player |
 | `audio.js` | Shared `<audio id="audioPlayer">`, `playTrack`, progress sync, mobile + focus chrome |
 | `modals.js` | Follow modal + Apple Music modal |
 | `lightbox.js` | Image lightbox (delegated clicks), video modal, swipe, keyboard |
@@ -97,9 +98,11 @@ NatesSpace/
 ```mermaid
 flowchart LR
   HTML[index.html] --> Data[assets/data.js]
+  HTML --> MusicList[js/music-files.js]
   HTML --> CSS[styles.css]
   HTML --> JS[js/*.js ordered]
   Data --> JS
+  MusicList --> JS
   JS --> Playlist[renderPlaylist]
   JS --> Feed[renderPosts]
   JS --> Lightbox[Image / video modals]

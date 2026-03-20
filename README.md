@@ -2,7 +2,7 @@
 
 A premium personal portal and social-style portfolio. Built with pure HTML5, CSS3, and Vanilla JavaScript—no frameworks, no build steps, just pure performance.
 
-![Version](https://img.shields.io/badge/version-1.2.0-00d4aa)
+![Version](https://img.shields.io/badge/version-1.2.1-00d4aa)
 ![No Dependencies](https://img.shields.io/badge/dependencies-0-success)
 
 ## ✨ Latest Features
@@ -15,7 +15,7 @@ A premium personal portal and social-style portfolio. Built with pure HTML5, CSS
 - 📐 **Layout Engine** - Swap sidebars or enter "Focus Mode" for an immersive content experience.
 - ✨ **Particles & motion** - Background particle canvas and scroll-triggered reveal on feed and panels.
 - 📰 **Data-driven feed** - Posts defined in `assets/data.js` and rendered at load.
-- 🎚️ **Music** - Add filenames to `js/music-files.js` → [`music.html`](music.html) and the feed player use `assets/music/`.
+- 🎚️ **Music** - See **[Music guide](./DOCS/MUSIC_GUIDE.md)** — drop files in `assets/music/`, run `node tools/scan-music.mjs --apply`, open [`music.html`](music.html).
 
 ## 🚀 Quick Start
 
@@ -44,6 +44,7 @@ Detailed information is available in the `DOCS/` directory:
 - 📋 **[SBOM](./DOCS/SBOM.md)**: Assets and security audit.
 - 📓 **[Scratchpad](./DOCS/SCRATCHPAD.md)**: Active development notes and history.
 - 📐 **[Style guide](./DOCS/STYLE_GUIDE.md)**: Conventions for JS/CSS/data and trace tags.
+- 🎵 **[Music guide](./DOCS/MUSIC_GUIDE.md)**: Put files in `assets/music/`, run `node tools/scan-music.mjs --apply`, reload.
 
 ## 🛠️ Customization
 

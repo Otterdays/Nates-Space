@@ -4,6 +4,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.1] - 2026-03-20
+
+### Added
+- **DOCS/MUSIC_GUIDE.md** — step-by-step guide for `assets/music/`, `js/music-files.js`, and `scan-music.mjs --apply` (troubleshooting + tables).
+
+### Changed
+- **Documentation**: Linked MUSIC_GUIDE from README, SUMMARY, ARCHITECTURE (structure, components, mermaid, feed pipeline), SBOM, STYLE_GUIDE; corrected stale “musicCatalog / data.js markers” references.
+
 ## [1.2.0] - 2026-03-20
 
 ### Changed

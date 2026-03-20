@@ -41,7 +41,7 @@ All site logic ships as ordered IIFE scripts under `js/` (see `DOCS/ARCHITECTURE
 - `tools/convert.js`: CommonJS; uses npm package `heic-convert` (dev-only) to transcode HEIC images to JPG. Not deployed to production.
 - `tools/convert.mjs`: ESM equivalent of the above.
 - `tools/convert_audio.bat`: Local FFmpeg-style workflow for producing M4A under `assets/music/`; not part of the static bundle.
-- `tools/scan-music.mjs`: Node ESM; `node tools/scan-music.mjs` prints `MY_MUSIC_FILES` lines to paste into `js/music-files.js`.
+- `tools/scan-music.mjs`: Node ESM; `node tools/scan-music.mjs --apply` patches the `MY_MUSIC_FILES` block in `js/music-files.js`. Without flags, prints pasteable lines. **User guide:** [MUSIC_GUIDE.md](./MUSIC_GUIDE.md).
 
 ### Optional dev dependency (not shipped to Pages)
 | Package | Scope | Notes |

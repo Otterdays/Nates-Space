@@ -1,6 +1,6 @@
 /**
  * YOUR MUSIC — list matches files in assets/music/
- * Refresh list:  node tools/scan-music.mjs --apply
+ * Guide: DOCS/MUSIC_GUIDE.md  |  Refresh: node tools/scan-music.mjs --apply
  */
 /* <MY_MUSIC_FILES> */
 window.MY_MUSIC_FILES = [
