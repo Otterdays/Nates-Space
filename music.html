@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=112">
+    <link rel="stylesheet" href="styles.css?v=113">
 </head>
 
 <body class="music-page-body">
@@ -55,9 +55,11 @@
                 <div class="music-library-intro">
                     <h1 class="music-library-title">Music library</h1>
                     <p class="music-library-sub">
-                        Every track listed here maps to a file under <code>assets/music/</code>. Add audio files,
-                        then append a row to <code>musicCatalog</code> in <code>assets/data.js</code>
-                        (or run <code>node tools/scan-music.mjs</code> for a starter JSON).
+                        Tracks are auto-listed from <code>assets/music/</code> via
+                        <code>js/music-catalog.generated.js</code>. After you add or remove files, run
+                        <code>node tools/scan-music.mjs --write</code> and commit the updated generated file.
+                        Optional titles/durations live in <code>musicTrackOverrides</code> in
+                        <code>assets/data.js</code>; EP strip order uses <code>epTrackSrcs</code>.
                     </p>
                 </div>
                 <label class="music-search-wrap">
@@ -102,10 +104,12 @@
         </div>
     </div>
 
-    <script src="assets/data.js?v=112"></script>
-    <script src="js/theme-layout.js?v=112"></script>
-    <script src="js/particles.js?v=112"></script>
-    <script src="js/music-page.js?v=112"></script>
+    <script src="assets/data.js?v=113"></script>
+    <script src="js/music-catalog.generated.js?v=113"></script>
+    <script src="js/music-catalog-merge.js?v=113"></script>
+    <script src="js/theme-layout.js?v=113"></script>
+    <script src="js/particles.js?v=113"></script>
+    <script src="js/music-page.js?v=113"></script>
 </body>
 
 </html>

@@ -4,6 +4,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.4] - 2026-03-20
+
+### Added
+- **`js/music-catalog.generated.js`**: Auto-built list of every audio file in `assets/music/` (regenerate with `node tools/scan-music.mjs --write`).
+- **`js/music-catalog-merge.js`**: Merges scan + `musicTrackOverrides` + `epTrackSrcs` into `getMusicCatalogMerged()` / `getEpTracks()`.
+
+### Changed
+- **`assets/data.js`**: Replaced hand-maintained `musicCatalog` with `epTrackSrcs` and `musicTrackOverrides` (paths must match filenames in `assets/music/`).
+- **`tools/scan-music.mjs`**: `--write` flag updates the generated catalog; default mode still prints JSON to stdout.
+
 ## [1.1.3] - 2026-03-20
 
 ### Added

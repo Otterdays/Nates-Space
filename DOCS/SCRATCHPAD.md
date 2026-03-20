@@ -2,7 +2,14 @@
 
 # Nate's Space - Scratchpad
 
-## Current Session: 2026-03-20 (Music library page)
+## Current Session: 2026-03-20 (Generated music catalog)
+
+### Last actions
+- [x] `music-catalog.generated.js` from `assets/music/` via `scan-music.mjs --write`; `music-catalog-merge.js` + `epTrackSrcs` / `musicTrackOverrides` in `data.js`.
+
+---
+
+## Session: 2026-03-20 (Music library page)
 
 ### Last actions
 - [x] Added `music.html` + `js/music-page.js` (full-catalog player, search, dock UI).

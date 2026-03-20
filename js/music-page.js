@@ -18,7 +18,9 @@
 
     if (!listEl || !audio || !window.NatesData) return;
 
-    const catalog = Array.isArray(NatesData.musicCatalog) ? NatesData.musicCatalog.slice() : [];
+    const catalog = typeof NatesData.getMusicCatalogMerged === 'function'
+        ? NatesData.getMusicCatalogMerged().slice()
+        : (Array.isArray(NatesData.musicCatalog) ? NatesData.musicCatalog.slice() : []);
     let filtered = catalog.slice();
     let playingIndex = -1;
     let rowEls = [];

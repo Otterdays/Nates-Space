@@ -1,4 +1,4 @@
-// [TRACE: DOCS/ARCHITECTURE.md] EP rows from NatesData.musicCatalog (includeOnEp).
+// [TRACE: DOCS/ARCHITECTURE.md] EP rows from NatesData.getEpTracks() (merged scan + epTrackSrcs).
 window.renderPlaylist = function renderPlaylist() {
     if (!window.NatesData) return;
 

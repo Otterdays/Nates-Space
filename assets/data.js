@@ -1,42 +1,38 @@
 // Nate's Space Data Source
 //
-// Music: drop files under assets/music/ then add a row to musicCatalog (or run
-// node tools/scan-music.mjs and paste). includeOnEp: true = show in sidebar / focus / mobile EP UI.
+// Music: all files under assets/music/ are listed in js/music-catalog.generated.js
+// (refresh: node tools/scan-music.mjs --write). EP strip + overrides live here.
 
 const NatesData = {
     /**
-     * Full library (music.html). EP players use entries where includeOnEp === true.
-     * Optional: format, added (ISO date string), notes.
+     * Which files appear in sidebar / focus / mobile EP — `src` must match generated catalog exactly.
      */
-    musicCatalog: [
-        {
-            src: 'assets/music/Akward Moments Natee V2 (M).mp3',
-            title: 'Awkward Moments',
-            artist: 'Natee',
-            duration: '3:24',
-            format: 'mp3',
-            includeOnEp: true,
-            added: '2026-01-12'
-        },
-        {
-            src: 'assets/music/Natee 730 PM V1 (M).m4a',
-            title: '7:30 PM',
-            artist: 'Natee',
-            duration: '2:48',
-            format: 'm4a',
-            includeOnEp: true,
-            added: '2026-01-12'
-        },
-        {
-            src: 'assets/music/Dark Spaces Natee  V2.m4a',
-            title: 'Dark Spaces',
-            artist: 'Natee',
-            duration: '3:43',
-            format: 'm4a',
-            includeOnEp: true,
-            added: '2026-01-14'
-        }
+    epTrackSrcs: [
+        'assets/music/Akward Moments Natee V2 (M).mp3',
+        'assets/music/Natee 730 PM V1 (M).m4a',
+        'assets/music/Dark Spaces Natee  V2.m4a'
     ],
+
+    /**
+     * Optional display metadata keyed by exact `src` from the generated catalog.
+     */
+    musicTrackOverrides: {
+        'assets/music/Akward Moments Natee V2 (M).mp3': {
+            title: 'Awkward Moments',
+            duration: '3:24'
+        },
+        'assets/music/Natee 730 PM V1 (M).m4a': {
+            title: '7:30 PM',
+            duration: '2:48'
+        },
+        'assets/music/Dark Spaces Natee  V2.m4a': {
+            title: 'Dark Spaces',
+            duration: '3:43'
+        }
+    },
+
+    /** Legacy fallback if music-catalog.generated.js is missing or empty (normally unused). */
+    musicCatalog: [],
 
     /** Studio gallery lightbox metadata (matched to DOM imgs by asset path). */
     images: [
@@ -141,12 +137,4 @@ const NatesData = {
             stats: { likes: 445, comments: 67 }
         }
     ]
-};
-
-/** @returns {Array<{src:string,title:string,artist:string,duration?:string,includeOnEp?:boolean}>} */
-NatesData.getEpTracks = function getEpTracks() {
-    if (!this.musicCatalog || !this.musicCatalog.length) return [];
-    return this.musicCatalog.filter(function (t) {
-        return t.includeOnEp === true;
-    });
 };

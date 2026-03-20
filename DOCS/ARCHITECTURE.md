@@ -12,18 +12,18 @@ NatesSpace/
 ├── index.html          # Feed shell; modals; EP player DOM; composer
 ├── music.html          # Full music library (all `musicCatalog` tracks + dedicated player)
 ├── styles.css          # Themes, glass UI, responsive, animations
-├── js/                 # Runtime modules (loaded in order; see “JavaScript modules” below)
+├── js/                 # Runtime modules + `music-catalog.generated.js` (folder scan; see tools/)
 ├── .nojekyll           # Prevents Jekyll processing on GitHub Pages
 ├── .gitignore          # Ignores node_modules, *.wav, *.exe, etc.
 ├── assets/
-│   ├── data.js         # NatesData: `musicCatalog`, gallery `images`, `posts`; `getEpTracks()`
+│   ├── data.js         # NatesData: `epTrackSrcs`, `musicTrackOverrides`, gallery `images`, `posts`
 │   ├── *.jpg, *.mp4    # Media (paths referenced from HTML/data.js)
 │   └── music/          # All tracks (mp3/m4a/…); listed in `musicCatalog`
 ├── tools/
 │   ├── convert.js      # (Dev) CommonJS HEIC → JPG using heic-convert
 │   ├── convert.mjs     # (Dev) ESM variant
 │   ├── convert_audio.bat # (Dev) WAV → M4A helper for local encoding
-│   └── scan-music.mjs  # (Dev) Print JSON stubs for files in assets/music/
+│   └── scan-music.mjs  # (Dev) `node tools/scan-music.mjs --write` → refreshes `js/music-catalog.generated.js`
 ├── README.md
 └── DOCS/
     ├── ARCHITECTURE.md
@@ -82,8 +82,10 @@ NatesSpace/
 | `theme-layout.js` | Theme + layout toggles, hero / focus player visibility |
 | `particles.js` | `#particleCanvas` animation |
 | `scroll-reveal.js` | `window.revealObserver` + initial observe on gallery/friends |
-| `playlist.js` | `renderPlaylist()` — EP rows from `NatesData.getEpTracks()` (`musicCatalog` + `includeOnEp`) |
-| `music-page.js` | `music.html` only: library list + `#libraryAudio` dock player |
+| `music-catalog.generated.js` | **Generated** — `window.__MUSIC_CATALOG_SCAN` from `assets/music/*` (see `scan-music.mjs --write`) |
+| `music-catalog-merge.js` | `getMusicCatalogMerged()` + `getEpTracks()` (merges scan + `musicTrackOverrides` + `epTrackSrcs`) |
+| `playlist.js` | `renderPlaylist()` — EP rows from `getEpTracks()` |
+| `music-page.js` | `music.html` only: full merged catalog + `#libraryAudio` dock player |
 | `audio.js` | Shared `<audio id="audioPlayer">`, `playTrack`, progress sync, mobile + focus chrome |
 | `modals.js` | Follow modal + Apple Music modal |
 | `lightbox.js` | Image lightbox (delegated clicks), video modal, swipe, keyboard |
