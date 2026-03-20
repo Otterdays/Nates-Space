@@ -9,19 +9,21 @@ Nate's Space is a static personal portfolio/social-style website built with vani
 
 ```
 NatesSpace/
-├── index.html          # Shell markup, modals, music player DOM, composer (feed slots empty; filled by JS)
+├── index.html          # Feed shell; modals; EP player DOM; composer
+├── music.html          # Full music library (all `musicCatalog` tracks + dedicated player)
 ├── styles.css          # Themes, glass UI, responsive, animations
 ├── js/                 # Runtime modules (loaded in order; see “JavaScript modules” below)
 ├── .nojekyll           # Prevents Jekyll processing on GitHub Pages
 ├── .gitignore          # Ignores node_modules, *.wav, *.exe, etc.
 ├── assets/
-│   ├── data.js         # NatesData: gallery metadata + posts (source of truth for feed)
+│   ├── data.js         # NatesData: `musicCatalog`, gallery `images`, `posts`; `getEpTracks()`
 │   ├── *.jpg, *.mp4    # Media (paths referenced from HTML/data.js)
-│   └── music/          # EP tracks (mp3/m4a) referenced by players
+│   └── music/          # All tracks (mp3/m4a/…); listed in `musicCatalog`
 ├── tools/
 │   ├── convert.js      # (Dev) CommonJS HEIC → JPG using heic-convert
 │   ├── convert.mjs     # (Dev) ESM variant
-│   └── convert_audio.bat # (Dev) WAV → M4A helper for local encoding
+│   ├── convert_audio.bat # (Dev) WAV → M4A helper for local encoding
+│   └── scan-music.mjs  # (Dev) Print JSON stubs for files in assets/music/
 ├── README.md
 └── DOCS/
     ├── ARCHITECTURE.md
@@ -68,7 +70,7 @@ NatesSpace/
 ### Layout & Logic
 - **Layout Toggles**: Desktop supports swapping sidebars or entering "Focus" mode (centered feed).
 - **Responsive Logic**: Media queries handle the transition from a 2-column desktop layout to a 1-column mobile stack. Mobile hides the layout toggle as it's not applicable.
-- **Cache Busting**: Manual query string on `styles.css` and each `js/*.js` in `index.html` (currently `?v=111`) so updates beat CDN/browser caches.
+- **Cache Busting**: Manual query string on `styles.css` and each `js/*.js` in `index.html` / `music.html` (currently `?v=112`) so updates beat CDN/browser caches.
 - **Feed pipeline**: `index.html` loads `assets/data.js` (defines `NatesData`), then `js/app-init.js` calls `renderPlaylist()` and `renderPosts()`. Static `article.post` nodes are no longer shipped; the feed is entirely data-driven when `NatesData` is present.
 
 ### JavaScript modules (`js/`) — load order [added 2026-03-20]
@@ -80,7 +82,8 @@ NatesSpace/
 | `theme-layout.js` | Theme + layout toggles, hero / focus player visibility |
 | `particles.js` | `#particleCanvas` animation |
 | `scroll-reveal.js` | `window.revealObserver` + initial observe on gallery/friends |
-| `playlist.js` | `renderPlaylist()` — builds sidebar / focus / mobile rows from `NatesData.playlist` |
+| `playlist.js` | `renderPlaylist()` — EP rows from `NatesData.getEpTracks()` (`musicCatalog` + `includeOnEp`) |
+| `music-page.js` | `music.html` only: library list + `#libraryAudio` dock player |
 | `audio.js` | Shared `<audio id="audioPlayer">`, `playTrack`, progress sync, mobile + focus chrome |
 | `modals.js` | Follow modal + Apple Music modal |
 | `lightbox.js` | Image lightbox (delegated clicks), video modal, swipe, keyboard |

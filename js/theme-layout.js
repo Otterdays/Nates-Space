@@ -6,17 +6,13 @@
     const mainGrid = document.querySelector('.main-grid');
     const heroSection = document.querySelector('.hero-section');
 
-    if (!themeToggle || !mainGrid) return;
+    if (!themeToggle) return;
 
     const savedTheme = localStorage.getItem('nateTheme');
     if (savedTheme) {
         html.setAttribute('data-theme', savedTheme);
         updateThemeIcon(savedTheme);
     }
-
-    const savedLayout = localStorage.getItem('nateLayout') || 'left';
-    mainGrid.setAttribute('data-layout', savedLayout);
-    if (layoutToggle) updateLayoutIcon(savedLayout);
 
     themeToggle.addEventListener('click', function () {
         const currentTheme = html.getAttribute('data-theme');
@@ -35,6 +31,12 @@
             icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
         }
     }
+
+    if (!mainGrid) return;
+
+    const savedLayout = localStorage.getItem('nateLayout') || 'left';
+    mainGrid.setAttribute('data-layout', savedLayout);
+    if (layoutToggle) updateLayoutIcon(savedLayout);
 
     if (layoutToggle) {
         layoutToggle.addEventListener('click', function () {

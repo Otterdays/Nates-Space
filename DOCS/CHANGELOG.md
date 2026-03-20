@@ -4,6 +4,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.3] - 2026-03-20
+
+### Added
+- **`music.html`**: Full music library page with search, track list from `NatesData.musicCatalog`, fixed bottom player (play/pause, prev/next, scrub, download link).
+- **`tools/scan-music.mjs`**: Dev helper — `node tools/scan-music.mjs` prints JSON stubs for new files in `assets/music/`.
+
+### Changed
+- **Data model**: `musicCatalog` replaces standalone `playlist`; EP sidebar / focus / mobile players use `NatesData.getEpTracks()` (entries with `includeOnEp: true`).
+- **Navigation**: Feed ↔ Music links in the top nav on `index.html` and `music.html`.
+- **`theme-layout.js`**: Theme toggle works on pages without `.main-grid` (e.g. music page).
+
 ## [1.1.2] - 2026-03-20
 
 ### Changed

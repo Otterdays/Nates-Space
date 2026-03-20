@@ -20,7 +20,7 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - [My_Thoughts.md](./My_Thoughts.md) - Internal developer reflections
 
 ## Current Status
-- **Version**: **v1.1.2** (2026-03-20) — modular `js/` runtime + data playlist / gallery metadata
+- **Version**: **v1.1.3** (2026-03-20) — `music.html` library + `musicCatalog` data model
 - **Health**: ✅ Stable
 - **Next Milestone**: Content Expansion
 
@@ -32,6 +32,7 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - 🖼️ **Facebook-style Lightbox**: Premium image viewing experience with social metadata; swipe left/right on touch.
 - 🎥 **Video Support**: Integrated video posts with custom play overlays.
 - 🍎 **Music Integration**: Native Apple Music embeds and social links.
+- 🎚️ **Music library page** (`music.html`): Full `musicCatalog` with search and dock player; EP subset still powers sidebar / mobile / focus via `includeOnEp`.
 - 📰 **Data-driven feed**: Posts rendered from `assets/data.js` via `renderPosts()`.
 - 🔽 **Scroll reveal**: IntersectionObserver animates posts and panels into view.
 

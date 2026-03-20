@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Library — Nate's Space</title>
+    <meta name="description" content="Full catalog of tracks from the studio.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=112">
+</head>
+
+<body class="music-page-body">
+    <canvas id="particleCanvas"></canvas>
+    <div class="music-page-shell">
+        <nav class="top-nav glass-panel music-top-nav">
+            <div class="nav-left-group">
+                <a href="index.html" class="logo music-logo-link" title="Back to feed">NATE'S SPACE</a>
+                <div class="nav-page-links">
+                    <a href="index.html" class="nav-text-link">Feed</a>
+                    <span class="nav-text-link nav-text-current" aria-current="page">Music</span>
+                </div>
+                <div class="nav-socials">
+                    <a href="https://music.apple.com/us/artist/natee/1810779697" target="_blank"
+                        class="nav-btn social-link apple" title="Apple Music">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.5-9h-2v3.59c0 1.28-1.04 2.32-2.32 2.32-1.28 0-2.32-1.04-2.32-2.32 0-1.28 1.04-2.32 2.32-2.32.17 0 .34.02.5.06V8h3.82v1z" />
+                        </svg>
+                    </a>
+                    <a href="https://open.spotify.com/artist/3quza30cJ2cYJm2auOIv85" target="_blank"
+                        class="nav-btn social-link spotify" title="Spotify">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-controls">
+                <button class="nav-btn" id="themeToggle" title="Switch Theme">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <main class="music-main">
+            <header class="glass-panel music-library-header">
+                <div class="music-library-intro">
+                    <h1 class="music-library-title">Music library</h1>
+                    <p class="music-library-sub">
+                        Every track listed here maps to a file under <code>assets/music/</code>. Add audio files,
+                        then append a row to <code>musicCatalog</code> in <code>assets/data.js</code>
+                        (or run <code>node tools/scan-music.mjs</code> for a starter JSON).
+                    </p>
+                </div>
+                <label class="music-search-wrap">
+                    <span class="visually-hidden">Filter tracks</span>
+                    <input type="search" id="musicSearch" class="music-search-input" placeholder="Filter by title, artist, format, filename…" autocomplete="off">
+                </label>
+            </header>
+
+            <section class="glass-panel music-library-panel" aria-labelledby="musicLibHeading">
+                <div class="music-library-toolbar">
+                    <h2 id="musicLibHeading" class="music-lib-heading">Tracks</h2>
+                    <span class="music-count" id="musicCount">0 tracks</span>
+                </div>
+                <div class="music-library-list" id="musicLibraryList"></div>
+                <p class="music-empty-hint" id="musicEmptyState" hidden>No tracks match your filter.</p>
+            </section>
+        </main>
+
+        <div class="music-dock glass-panel" id="musicDock">
+            <audio id="libraryAudio" preload="metadata"></audio>
+            <div class="music-dock-row">
+                <div class="music-dock-info">
+                    <span class="music-dock-title" id="dockTitle">—</span>
+                    <span class="music-dock-artist" id="dockArtist"></span>
+                </div>
+                <div class="music-dock-controls">
+                    <button type="button" class="music-dock-btn" id="dockPrev" title="Previous">⏮</button>
+                    <button type="button" class="music-dock-btn music-dock-play" id="dockPlay" title="Play">▶</button>
+                    <button type="button" class="music-dock-btn" id="dockNext" title="Next">⏭</button>
+                </div>
+                <a class="music-dock-download" id="dockDownload" href="#" download title="Download file" hidden>⬇</a>
+            </div>
+            <div class="music-dock-progress-wrap">
+                <div class="music-dock-progress" id="dockProgressBar">
+                    <div class="music-dock-progress-fill" id="dockProgressFill"></div>
+                </div>
+                <div class="music-dock-times">
+                    <span id="dockCur">0:00</span>
+                    <span id="dockDur">0:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/data.js?v=112"></script>
+    <script src="js/theme-layout.js?v=112"></script>
+    <script src="js/particles.js?v=112"></script>
+    <script src="js/music-page.js?v=112"></script>
+</body>
+
+</html>

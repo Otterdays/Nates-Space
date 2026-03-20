@@ -2,7 +2,16 @@
 
 # Nate's Space - Scratchpad
 
-## Current Session: 2026-03-20 (Refactor execution)
+## Current Session: 2026-03-20 (Music library page)
+
+### Last actions
+- [x] Added `music.html` + `js/music-page.js` (full-catalog player, search, dock UI).
+- [x] `NatesData.musicCatalog` + `getEpTracks()`; `playlist.js` / `audio.js` updated; `theme-layout.js` works without `.main-grid`.
+- [x] `tools/scan-music.mjs`, nav links Feed/Music, styles, docs + cache `v=112`.
+
+---
+
+## Session: 2026-03-20 (Refactor execution)
 
 ### Last actions
 - [x] Split `script.js` into `js/*.js` with explicit load order; removed monolith.

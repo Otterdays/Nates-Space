@@ -56,8 +56,11 @@
         if (barName) barName.textContent = trackName;
         if (expName) expName.textContent = trackName;
 
-        const idx = NatesData && NatesData.playlist
-            ? NatesData.playlist.findIndex(function (t) { return t.title === trackName; })
+        const ep = NatesData && typeof NatesData.getEpTracks === 'function'
+            ? NatesData.getEpTracks()
+            : [];
+        const idx = ep.length
+            ? ep.findIndex(function (t) { return t.title === trackName; })
             : -1;
         document.querySelectorAll('#mobileTrackList .mobile-track-item').forEach(function (item, i) {
             item.classList.toggle('active', i === idx);
@@ -134,8 +137,11 @@
         audioPlayer.play();
         window.isPlaying = true;
 
-        if (trackIndex >= 0 && NatesData && NatesData.playlist && NatesData.playlist[trackIndex]) {
-            updateMobilePlayerUI(NatesData.playlist[trackIndex].title);
+        const epList = NatesData && typeof NatesData.getEpTracks === 'function'
+            ? NatesData.getEpTracks()
+            : [];
+        if (trackIndex >= 0 && epList[trackIndex]) {
+            updateMobilePlayerUI(epList[trackIndex].title);
             updateMobilePlayButtons('⏸');
         }
         updateFocusPlayerUI(trackIndex);

@@ -1,10 +1,11 @@
-// [TRACE: DOCS/ARCHITECTURE.md] Single source: NatesData.playlist → all players.
+// [TRACE: DOCS/ARCHITECTURE.md] EP rows from NatesData.musicCatalog (includeOnEp).
 window.renderPlaylist = function renderPlaylist() {
-    if (!window.NatesData || !Array.isArray(NatesData.playlist) || !NatesData.playlist.length) {
-        return;
-    }
+    if (!window.NatesData) return;
 
-    const pl = NatesData.playlist;
+    const pl = typeof NatesData.getEpTracks === 'function'
+        ? NatesData.getEpTracks()
+        : [];
+    if (!pl.length) return;
     const artist = pl[0].artist || 'Natee';
     const meta = document.getElementById('focusAlbumMeta');
     if (meta) meta.textContent = pl.length + ' tracks • ' + artist;

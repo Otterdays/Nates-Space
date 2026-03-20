@@ -2,7 +2,7 @@
 
 A premium personal portal and social-style portfolio. Built with pure HTML5, CSS3, and Vanilla JavaScript—no frameworks, no build steps, just pure performance.
 
-![Version](https://img.shields.io/badge/version-1.1.2-00d4aa)
+![Version](https://img.shields.io/badge/version-1.1.3-00d4aa)
 ![No Dependencies](https://img.shields.io/badge/dependencies-0-success)
 
 ## ✨ Latest Features
@@ -15,6 +15,7 @@ A premium personal portal and social-style portfolio. Built with pure HTML5, CSS
 - 📐 **Layout Engine** - Swap sidebars or enter "Focus Mode" for an immersive content experience.
 - ✨ **Particles & motion** - Background particle canvas and scroll-triggered reveal on feed and panels.
 - 📰 **Data-driven feed** - Posts defined in `assets/data.js` and rendered at load.
+- 🎚️ **Music library** - [`music.html`](music.html) lists every track in `musicCatalog`; add files under `assets/music/` and update data (or run `node tools/scan-music.mjs`).
 
 ## 🚀 Quick Start
 

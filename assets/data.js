@@ -1,25 +1,40 @@
 // Nate's Space Data Source
+//
+// Music: drop files under assets/music/ then add a row to musicCatalog (or run
+// node tools/scan-music.mjs and paste). includeOnEp: true = show in sidebar / focus / mobile EP UI.
 
 const NatesData = {
-    /** EP playlist — sidebar, focus mode, and mobile players render from this. */
-    playlist: [
+    /**
+     * Full library (music.html). EP players use entries where includeOnEp === true.
+     * Optional: format, added (ISO date string), notes.
+     */
+    musicCatalog: [
         {
             src: 'assets/music/Akward Moments Natee V2 (M).mp3',
             title: 'Awkward Moments',
             artist: 'Natee',
-            duration: '3:24'
+            duration: '3:24',
+            format: 'mp3',
+            includeOnEp: true,
+            added: '2026-01-12'
         },
         {
             src: 'assets/music/Natee 730 PM V1 (M).m4a',
             title: '7:30 PM',
             artist: 'Natee',
-            duration: '2:48'
+            duration: '2:48',
+            format: 'm4a',
+            includeOnEp: true,
+            added: '2026-01-12'
         },
         {
             src: 'assets/music/Dark Spaces Natee  V2.m4a',
             title: 'Dark Spaces',
             artist: 'Natee',
-            duration: '3:43'
+            duration: '3:43',
+            format: 'm4a',
+            includeOnEp: true,
+            added: '2026-01-14'
         }
     ],
 
@@ -126,4 +141,12 @@ const NatesData = {
             stats: { likes: 445, comments: 67 }
         }
     ]
+};
+
+/** @returns {Array<{src:string,title:string,artist:string,duration?:string,includeOnEp?:boolean}>} */
+NatesData.getEpTracks = function getEpTracks() {
+    if (!this.musicCatalog || !this.musicCatalog.length) return [];
+    return this.musicCatalog.filter(function (t) {
+        return t.includeOnEp === true;
+    });
 };
