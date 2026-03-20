@@ -1,15 +1,14 @@
 /**
- * YOUR MUSIC — edit this file only.
- * 1. Put audio files in assets/music/
- * 2. Add each exact filename to MY_MUSIC_FILES below (copy from folder)
- *
- * Optional: MY_MUSIC_TITLES = pretty names. MY_EP_FILES = subset for sidebar EP (omit = same as all).
+ * YOUR MUSIC — list matches files in assets/music/
+ * Refresh list:  node tools/scan-music.mjs --apply
  */
+/* <MY_MUSIC_FILES> */
 window.MY_MUSIC_FILES = [
     'Akward Moments Natee V2 (M).mp3',
+    'Dark Spaces Natee  V2.m4a',
     'Natee 730 PM V1 (M).m4a',
-    'Dark Spaces Natee  V2.m4a'
 ];
+/* </MY_MUSIC_FILES> */
 
 window.MY_MUSIC_ARTIST = 'Natee';
 
