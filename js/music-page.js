@@ -16,11 +16,11 @@
     const dockDur = document.getElementById('dockDur');
     const dockDownload = document.getElementById('dockDownload');
 
-    if (!listEl || !audio || !window.NatesData) return;
+    if (!listEl || !audio) return;
 
-    const catalog = typeof NatesData.getMusicCatalogMerged === 'function'
-        ? NatesData.getMusicCatalogMerged().slice()
-        : (Array.isArray(NatesData.musicCatalog) ? NatesData.musicCatalog.slice() : []);
+    const catalog = typeof window.getAllMusicRows === 'function'
+        ? window.getAllMusicRows().slice()
+        : [];
     let filtered = catalog.slice();
     let playingIndex = -1;
     let rowEls = [];
@@ -123,7 +123,11 @@
 
             const badges = document.createElement('div');
             badges.className = 'music-row-badges';
-            if (track.includeOnEp) {
+            var epNames = window.MY_EP_FILES && window.MY_EP_FILES.length
+                ? window.MY_EP_FILES
+                : window.MY_MUSIC_FILES || [];
+            var fn = fileNameFromSrc(track.src);
+            if (epNames.indexOf(fn) !== -1) {
                 const ep = document.createElement('span');
                 ep.className = 'music-badge music-badge-ep';
                 ep.textContent = 'EP';

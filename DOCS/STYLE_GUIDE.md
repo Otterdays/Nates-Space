@@ -49,7 +49,7 @@ Use sparingly; types and clear names beat comments.
 
 The section **JavaScript (`script.js`)** above still describes naming and discipline; read “the bundle” as the combined `js/*.js` surface, not a single file.
 
-**Music catalog [2026-03-20]:** Between `/* <AUTOGEN_MUSIC_SCAN> */` markers in `assets/data.js` is machine-written (`node tools/scan-music.mjs --write`); human edits belong in `musicTrackOverrides` / `epTrackSrcs` only.
+**Music [2026-03-20]:** Edit `js/music-files.js` only (`MY_MUSIC_FILES`, optional `MY_MUSIC_TITLES`). Optional: `node tools/scan-music.mjs` to print filenames.
 
 ## Documentation (`DOCS/`)
 

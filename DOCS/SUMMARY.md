@@ -20,7 +20,7 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - [My_Thoughts.md](./My_Thoughts.md) - Internal developer reflections
 
 ## Current Status
-- **Version**: **v1.1.5** (2026-03-20) — music scan embedded in `data.js` (works with `file://`)
+- **Version**: **v1.2.0** (2026-03-20) — music = `js/music-files.js` only
 - **Health**: ✅ Stable
 - **Next Milestone**: Content Expansion
 
@@ -32,7 +32,7 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - 🖼️ **Facebook-style Lightbox**: Premium image viewing experience with social metadata; swipe left/right on touch.
 - 🎥 **Video Support**: Integrated video posts with custom play overlays.
 - 🍎 **Music Integration**: Native Apple Music embeds and social links.
-- 🎚️ **Music library** (`music.html`): All files under `assets/music/` via generated catalog + merge; EP order from `epTrackSrcs` in `data.js`.
+- 🎚️ **Music** (`music.html`): Filenames listed in `js/music-files.js` → plays from `assets/music/`.
 - 📰 **Data-driven feed**: Posts rendered from `assets/data.js` via `renderPosts()`.
 - 🔽 **Scroll reveal**: IntersectionObserver animates posts and panels into view.
 

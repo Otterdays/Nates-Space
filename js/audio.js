@@ -56,9 +56,7 @@
         if (barName) barName.textContent = trackName;
         if (expName) expName.textContent = trackName;
 
-        const ep = NatesData && typeof NatesData.getEpTracks === 'function'
-            ? NatesData.getEpTracks()
-            : [];
+        const ep = typeof window.getEpMusicRows === 'function' ? window.getEpMusicRows() : [];
         const idx = ep.length
             ? ep.findIndex(function (t) { return t.title === trackName; })
             : -1;
@@ -137,9 +135,7 @@
         audioPlayer.play();
         window.isPlaying = true;
 
-        const epList = NatesData && typeof NatesData.getEpTracks === 'function'
-            ? NatesData.getEpTracks()
-            : [];
+        const epList = typeof window.getEpMusicRows === 'function' ? window.getEpMusicRows() : [];
         if (trackIndex >= 0 && epList[trackIndex]) {
             updateMobilePlayerUI(epList[trackIndex].title);
             updateMobilePlayButtons('⏸');

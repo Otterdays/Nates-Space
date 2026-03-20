@@ -16,14 +16,14 @@ NatesSpace/
 ├── .nojekyll           # Prevents Jekyll processing on GitHub Pages
 ├── .gitignore          # Ignores node_modules, *.wav, *.exe, etc.
 ├── assets/
-│   ├── data.js         # NatesData: `epTrackSrcs`, `musicTrackOverrides`, gallery `images`, `posts`
+│   ├── data.js         # NatesData: gallery `images`, `posts` (not music)
 │   ├── *.jpg, *.mp4    # Media (paths referenced from HTML/data.js)
 │   └── music/          # All tracks (mp3/m4a/…); listed in `musicCatalog`
 ├── tools/
 │   ├── convert.js      # (Dev) CommonJS HEIC → JPG using heic-convert
 │   ├── convert.mjs     # (Dev) ESM variant
 │   ├── convert_audio.bat # (Dev) WAV → M4A helper for local encoding
-│   └── scan-music.mjs  # (Dev) `node tools/scan-music.mjs --write` → patches `__MUSIC_CATALOG_SCAN` in `assets/data.js`
+│   └── scan-music.mjs  # (Dev) prints filenames for `MY_MUSIC_FILES` in `js/music-files.js`
 ├── README.md
 └── DOCS/
     ├── ARCHITECTURE.md
@@ -82,8 +82,8 @@ NatesSpace/
 | `theme-layout.js` | Theme + layout toggles, hero / focus player visibility |
 | `particles.js` | `#particleCanvas` animation |
 | `scroll-reveal.js` | `window.revealObserver` + initial observe on gallery/friends |
-| `music-catalog-merge.js` | `getMusicCatalogMerged()` + `getEpTracks()` (merges `__MUSIC_CATALOG_SCAN` in `data.js` + overrides + `epTrackSrcs`) |
-| `playlist.js` | `renderPlaylist()` — EP rows from `getEpTracks()` |
+| `music-files.js` | `MY_MUSIC_FILES` + `getAllMusicRows()` / `getEpMusicRows()` |
+| `playlist.js` | `renderPlaylist()` — EP rows from `getEpMusicRows()` |
 | `music-page.js` | `music.html` only: full merged catalog + `#libraryAudio` dock player |
 | `audio.js` | Shared `<audio id="audioPlayer">`, `playTrack`, progress sync, mobile + focus chrome |
 | `modals.js` | Follow modal + Apple Music modal |

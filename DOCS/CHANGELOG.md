@@ -4,6 +4,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2026-03-20
+
+### Changed
+- **Music**: One list only — `js/music-files.js` with `MY_MUSIC_FILES` (exact filenames in `assets/music/`). Music page does not load `data.js`. Removed `music-catalog-merge.js`, scan markers in `data.js`, and `--write` flow.
+
+### Added
+- **Optional** `MY_MUSIC_TITLES`, `MY_EP_FILES`, `MY_MUSIC_ARTIST` in `music-files.js`.
+
+### Removed
+- `js/music-catalog-merge.js`.
+
 ## [1.1.5] - 2026-03-20
 
 ### Fixed
