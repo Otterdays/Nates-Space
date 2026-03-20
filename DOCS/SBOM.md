@@ -1,14 +1,19 @@
+<!-- PRESERVATION RULE: Never delete or replace content. Append or annotate only. -->
+
 # Nate's Space - Security Bill of Materials (SBOM)
 
 ## Overview
 This project is built using a **zero npm dependency** philosophy for the production site. It is a static pure HTML/CSS/JS application.
 
+### Production JavaScript (2026-03-20)
+All site logic ships as ordered IIFE scripts under `js/` (see `DOCS/ARCHITECTURE.md` — “JavaScript modules”). No minifier or bundler in repo; behavior depends on load order in `index.html`.
+
 ## External Resources (Trusted CDNs)
 
 | Resource | Type | Provider | Domain | Last Verified |
 |----------|------|----------|--------|---------------|
-| Outfit Font | Typography | Google Fonts | fonts.googleapis.com | 2026-01-14 |
-| Space Mono Font | Typography | Google Fonts | fonts.googleapis.com | 2026-01-14 |
+| Outfit Font | Typography | Google Fonts | fonts.googleapis.com | 2026-03-20 |
+| Space Mono Font | Typography | Google Fonts | fonts.googleapis.com | 2026-03-20 |
 
 ## Local Media Assets
 
@@ -33,13 +38,23 @@ This project is built using a **zero npm dependency** philosophy for the product
 | `assets/music/Dark Spaces Natee  V2.m4a` | M4A | Dark Spaces |
 
 ## Development Tools
-- `convert.js`: Uses `heic-convert` (dev-only) to transcode HEIC images to JPG for browser compatibility. Not deployed to production.
+- `tools/convert.js`: CommonJS; uses npm package `heic-convert` (dev-only) to transcode HEIC images to JPG. Not deployed to production.
+- `tools/convert.mjs`: ESM equivalent of the above.
+- `tools/convert_audio.bat`: Local FFmpeg-style workflow for producing M4A under `assets/music/`; not part of the static bundle.
+
+### Optional dev dependency (not shipped to Pages)
+| Package | Scope | Notes |
+|---------|--------|------|
+| `heic-convert` | `tools/convert.js`, `tools/convert.mjs` | Install with `npm install heic-convert` only if running converters; keep out of production path. |
+
+## Repository hygiene
+- Root `.gitignore` excludes `node_modules/`, `*.wav`, `*.exe`, `.DS_Store` — large audio masters may stay local while M4A/MP3 ship for the player.
 
 ## Security Audit
 - **Attack Surface**: Extremely minimal. No server-side processing, no database, no active sessions.
 - **Privacy**: No external trackers (Google Analytics, etc.) are implemented.
-- **Data Persistence**: `localStorage` is used exclusively for theme and layout preferences.
+- **Data Persistence**: `localStorage` keys `nateTheme` and `nateLayout` store UI preferences only.
 - **Dependencies**: 0 production dependencies.
 
 ## Audit Status
-✅ **Clean** - No vulnerabilities found (2026-01-14)
+✅ **Clean** - No production npm dependencies (2026-03-20). Dev tools optional; audit `heic-convert` when installing.

@@ -1,6 +1,29 @@
 // Nate's Space Data Source
 
 const NatesData = {
+    /** EP playlist — sidebar, focus mode, and mobile players render from this. */
+    playlist: [
+        {
+            src: 'assets/music/Akward Moments Natee V2 (M).mp3',
+            title: 'Awkward Moments',
+            artist: 'Natee',
+            duration: '3:24'
+        },
+        {
+            src: 'assets/music/Natee 730 PM V1 (M).m4a',
+            title: '7:30 PM',
+            artist: 'Natee',
+            duration: '2:48'
+        },
+        {
+            src: 'assets/music/Dark Spaces Natee  V2.m4a',
+            title: 'Dark Spaces',
+            artist: 'Natee',
+            duration: '3:43'
+        }
+    ],
+
+    /** Studio gallery lightbox metadata (matched to DOM imgs by asset path). */
     images: [
         {
             id: 'img1',
@@ -10,6 +33,7 @@ const NatesData = {
             quote: "Mood: 🎤 Recording",
             timestamp: "Profile",
             tag: "Profile",
+            views: '👁️ 2.1k views',
             likes: "420",
             comments: "69"
         },
@@ -21,6 +45,7 @@ const NatesData = {
             quote: 'The setup is looking right. Got the gear ready, got the ideas flowing. Time to create something special. 🎧',
             timestamp: '3 hours ago',
             tag: 'Photo',
+            views: '👁️ 1.8k views',
             likes: '287',
             comments: '42'
         },
@@ -32,6 +57,7 @@ const NatesData = {
             quote: "When the creative block finally breaks and the ideas start flowing... there's no better feeling. Been in here for 6 hours straight. No complaints. 💯",
             timestamp: 'Yesterday',
             tag: 'Photo',
+            views: '👁️ 956 views',
             likes: '156',
             comments: '28'
         },
@@ -43,6 +69,7 @@ const NatesData = {
             quote: "The real magic happens when nobody's watching. Just me, the mic, and the vision. Let's get it. 🔥",
             timestamp: '2 days ago',
             tag: 'Photo',
+            views: '👁️ 3.2k views',
             likes: '445',
             comments: '67'
         }

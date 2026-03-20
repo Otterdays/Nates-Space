@@ -2,7 +2,7 @@
 
 A premium personal portal and social-style portfolio. Built with pure HTML5, CSS3, and Vanilla JavaScript—no frameworks, no build steps, just pure performance.
 
-![Version](https://img.shields.io/badge/version-1.1.0-00d4aa)
+![Version](https://img.shields.io/badge/version-1.1.2-00d4aa)
 ![No Dependencies](https://img.shields.io/badge/dependencies-0-success)
 
 ## ✨ Latest Features
@@ -13,6 +13,8 @@ A premium personal portal and social-style portfolio. Built with pure HTML5, CSS
 - 📸 **Premium Lightbox** - Full-screen image/video viewer with social metadata, navigation, and download support.
 - 🎵 **Audio Engine** - Integrated music players (Sidebar, Mobile Bar, Focus Mode) with Apple Music & Spotify links.
 - 📐 **Layout Engine** - Swap sidebars or enter "Focus Mode" for an immersive content experience.
+- ✨ **Particles & motion** - Background particle canvas and scroll-triggered reveal on feed and panels.
+- 📰 **Data-driven feed** - Posts defined in `assets/data.js` and rendered at load.
 
 ## 🚀 Quick Start
 
@@ -40,6 +42,7 @@ Detailed information is available in the `DOCS/` directory:
 - 🏗️ **[Architecture](./DOCS/ARCHITECTURE.md)**: Design system, layout logic, and components.
 - 📋 **[SBOM](./DOCS/SBOM.md)**: Assets and security audit.
 - 📓 **[Scratchpad](./DOCS/SCRATCHPAD.md)**: Active development notes and history.
+- 📐 **[Style guide](./DOCS/STYLE_GUIDE.md)**: Conventions for JS/CSS/data and trace tags.
 
 ## 🛠️ Customization
 

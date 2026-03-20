@@ -1,3 +1,5 @@
+<!-- PRESERVATION RULE: Never delete or replace content. Append or annotate only. -->
+
 # Nate's Space - Project Summary
 
 ## What Is This?
@@ -14,25 +16,29 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - [ARCHITECTURE.md](./ARCHITECTURE.md) - Technical structure and design system
 - [SBOM.md](./SBOM.md) - Assets and security verification
 - [SCRATCHPAD.md](./SCRATCHPAD.md) - Active development notes
+- [STYLE_GUIDE.md](./STYLE_GUIDE.md) - Code and doc conventions
 - [My_Thoughts.md](./My_Thoughts.md) - Internal developer reflections
 
 ## Current Status
-- **Version**: **v1.1.0** (2026-01-14)
+- **Version**: **v1.1.2** (2026-03-20) — modular `js/` runtime + data playlist / gallery metadata
 - **Health**: ✅ Stable
 - **Next Milestone**: Content Expansion
 
 ## Key Features
 - 🎨 **Glassmorphism Design**: Animated gradients and frosted glass panels.
+- ✨ **Particle background**: Full-viewport canvas layer behind the app shell.
 - 🌓 **Dynamic Theming**: Dark/Light mode with persistence.
 - 📱 **Mobile Optimized**: Refined layouts for small screens, including a Spotify-style mobile player.
-- 🖼️ **Facebook-style Lightbox**: Premium image viewing experience with social metadata.
+- 🖼️ **Facebook-style Lightbox**: Premium image viewing experience with social metadata; swipe left/right on touch.
 - 🎥 **Video Support**: Integrated video posts with custom play overlays.
 - 🍎 **Music Integration**: Native Apple Music embeds and social links.
+- 📰 **Data-driven feed**: Posts rendered from `assets/data.js` via `renderPosts()`.
+- 🔽 **Scroll reveal**: IntersectionObserver animates posts and panels into view.
 
 ## Deployment
 ```bash
 git add .
-git commit -m "Version 1.1.0 - Mobile UI Refinements"
+git commit -m "docs: sync architecture and SBOM for v1.1.1"
 git push
 ```
 The site is hosted directly via GitHub Pages on the `main` branch.

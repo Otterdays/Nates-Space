@@ -1,6 +1,30 @@
+<!-- PRESERVATION RULE: Never delete or replace content. Append or annotate only. -->
+
 # Nate's Space - Scratchpad
 
-## Current Session: 2026-01-14 (Refinements & "Wow" Factor)
+## Current Session: 2026-03-20 (Refactor execution)
+
+### Last actions
+- [x] Split `script.js` into `js/*.js` with explicit load order; removed monolith.
+- [x] `NatesData.playlist` + `renderPlaylist()` for sidebar / focus / mobile EP UI; `NatesData.images` drives gallery lightbox metadata.
+- [x] Delegated lightbox + `.action-btn` interactions; consolidated audio element listeners; posts via `createElement` + `textContent`.
+- [x] Cache bump `?v=111` on CSS + JS; `CHANGELOG` / `ARCHITECTURE` / `SUMMARY` / `README` version **v1.1.2**.
+
+---
+
+## Session: 2026-03-20 (Documentation sync)
+
+### Last actions
+- [x] Walked repo (`index.html`, `script.js`, `assets/data.js`, `tools/`) and aligned DOCS with actual behavior.
+- [x] Added `DOCS/STYLE_GUIDE.md`; added preservation headers across DOCS; bumped summary/changelog to **v1.1.1** for doc release.
+- [x] Corrected architecture (data-driven feed, particles, scroll reveal, `?v=110`, `tools/` layout) and SBOM (dev tools, `localStorage` keys, `.gitignore`).
+
+### Next (optional)
+- [ ] Content expansion / new posts in `assets/data.js` when ready.
+
+---
+
+## Session: 2026-01-14 (Refinements & "Wow" Factor)
 
 ### Todo List 📝
 ### Completed Tasks ✅
@@ -36,9 +60,10 @@
   - [x] Successfully pushed pending changes to main.
 
 ### Immediate Tasks 🛠️
-- [ ] Implement Hero Redesign.
-- [ ] Add Particle Background logic.
-- [ ] Implement Scroll Reveal.
+[AMENDED 2026-03-20]: Completed in-tree — hero/immersive header, `#particleCanvas` particle system, `IntersectionObserver` scroll reveal, and `assets/data.js` feed are implemented; see `DOCS/ARCHITECTURE.md`.
+- [x] Implement Hero Redesign.
+- [x] Add Particle Background logic.
+- [x] Implement Scroll Reveal.
 
 ---
 

@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=110">
+    <link rel="stylesheet" href="styles.css?v=111">
 </head>
 
 <body>
@@ -163,29 +163,7 @@
                             </button>
                         </div>
                         <div class="player-container">
-                            <div class="track-list">
-                                <div class="track active" data-src="assets/music/Akward Moments Natee V2 (M).mp3">
-                                    <button class="track-play-btn">▶</button>
-                                    <div class="track-info">
-                                        <span class="track-title">Awkward Moments</span>
-                                        <span class="track-artist">Natee</span>
-                                    </div>
-                                </div>
-                                <div class="track" data-src="assets/music/Natee 730 PM V1 (M).m4a">
-                                    <button class="track-play-btn">▶</button>
-                                    <div class="track-info">
-                                        <span class="track-title">7:30 PM</span>
-                                        <span class="track-artist">Natee</span>
-                                    </div>
-                                </div>
-                                <div class="track" data-src="assets/music/Dark Spaces Natee  V2.m4a">
-                                    <button class="track-play-btn">▶</button>
-                                    <div class="track-info">
-                                        <span class="track-title">Dark Spaces</span>
-                                        <span class="track-artist">Natee</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="track-list" id="sidebarTrackList"></div>
                             <div class="player-controls">
                                 <div class="progress-container">
                                     <div class="progress-bar">
@@ -256,7 +234,7 @@
                         <div class="focus-player-header">
                             <div>
                                 <h3>🎵 The EP</h3>
-                                <span class="album-info">3 tracks • Natee</span>
+                                <span class="album-info" id="focusAlbumMeta">3 tracks • Natee</span>
                             </div>
                             <button class="icon-btn apple-toggle" title="Open Apple Music">
                                 <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
@@ -269,29 +247,7 @@
                             <div class="focus-album-art">
                                 <img src="assets/IMG_20260112_193737.jpg" alt="Album Art">
                             </div>
-                            <div class="focus-tracks">
-                                <div class="focus-track" data-src="assets/music/Akward Moments Natee V2 (M).mp3">
-                                    <button class="focus-track-btn">▶</button>
-                                    <div class="focus-track-info">
-                                        <span class="focus-track-title">Awkward Moments</span>
-                                        <span class="focus-track-artist">Natee</span>
-                                    </div>
-                                </div>
-                                <div class="focus-track" data-src="assets/music/Natee 730 PM V1 (M).m4a">
-                                    <button class="focus-track-btn">▶</button>
-                                    <div class="focus-track-info">
-                                        <span class="focus-track-title">7:30 PM</span>
-                                        <span class="focus-track-artist">Natee</span>
-                                    </div>
-                                </div>
-                                <div class="focus-track" data-src="assets/music/Dark Spaces Natee  V2.m4a">
-                                    <button class="focus-track-btn">▶</button>
-                                    <div class="focus-track-info">
-                                        <span class="focus-track-title">Dark Spaces</span>
-                                        <span class="focus-track-artist">Natee</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="focus-tracks" id="focusTrackList"></div>
                         </div>
                         <div class="focus-player-controls">
                             <div class="focus-progress-bar">
@@ -317,125 +273,7 @@
                         </div>
                     </div>
 
-                    <!-- Posts -->
-                    <article class="glass-panel post">
-                        <header class="post-header">
-                            <div class="post-meta">
-                                <h2>Off to the Engineer! 📤</h2>
-                                <span class="timestamp">Just now</span>
-                            </div>
-                            <span class="tag update">Update</span>
-                        </header>
-                        <div class="post-content">
-                            <p>Just sent the new track off to the engineer for mixing and mastering. Can't wait to hear
-                                how it sounds when it comes back polished! The wait is always the hardest part but it's
-                                gonna be worth it. Stay tuned fam! 🔥🎚️</p>
-                        </div>
-                        <footer class="post-footer">
-                            <button class="action-btn">❤️ 89</button>
-                            <button class="action-btn">💬 12</button>
-                            <button class="action-btn">🔖 Save</button>
-                            <button class="action-btn">↗️ Share</button>
-                        </footer>
-                    </article>
-
-                    <article class="glass-panel post">
-                        <header class="post-header">
-                            <div class="post-meta">
-                                <h2>Recording Session 🔥</h2>
-                                <span class="timestamp">Just now</span>
-                            </div>
-                            <span class="tag video">Video</span>
-                        </header>
-                        <div class="post-content">
-                            <p>In the studio laying down some new tracks. The energy is unmatched right now. Can't wait
-                                for y'all to hear this one! 🎤🔊</p>
-                            <div class="media-container video-container">
-                                <video controls poster="assets/IMG_20260112_194122.jpg">
-                                    <source src="assets/VID_20260112_193751.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                        </div>
-                        <footer class="post-footer">
-                            <button class="action-btn">❤️ 342</button>
-                            <button class="action-btn">💬 56</button>
-                            <button class="action-btn">🔖 Save</button>
-                            <button class="action-btn">↗️ Share</button>
-                        </footer>
-                    </article>
-
-                    <article class="glass-panel post">
-                        <header class="post-header">
-                            <div class="post-meta">
-                                <h2>Studio Vibes Today</h2>
-                                <span class="timestamp">3 hours ago</span>
-                            </div>
-                            <span class="tag photo">Photo</span>
-                        </header>
-                        <div class="post-content">
-                            <p>The setup is looking right. Got the gear ready, got the ideas flowing. Time to create
-                                something special. 🎧</p>
-                            <div class="media-container">
-                                <img src="assets/IMG_20260112_194124.jpg" alt="Studio setup">
-                                <div class="image-overlay">
-                                    <span>👁️ 1,420 views</span>
-                                </div>
-                            </div>
-                        </div>
-                        <footer class="post-footer">
-                            <button class="action-btn">❤️ 287</button>
-                            <button class="action-btn">💬 42</button>
-                            <button class="action-btn">🔖 Save</button>
-                            <button class="action-btn">↗️ Share</button>
-                        </footer>
-                    </article>
-
-                    <article class="glass-panel post">
-                        <header class="post-header">
-                            <div class="post-meta">
-                                <h2>Late Night Session</h2>
-                                <span class="timestamp">Yesterday</span>
-                            </div>
-                            <span class="tag update">Update</span>
-                        </header>
-                        <div class="post-content">
-                            <p>When the creative block finally breaks and the ideas start flowing... there's no better
-                                feeling. Been in here for 6 hours straight. No complaints. 💯</p>
-                        </div>
-                        <footer class="post-footer">
-                            <button class="action-btn">❤️ 156</button>
-                            <button class="action-btn">💬 28</button>
-                            <button class="action-btn">🔖 Save</button>
-                            <button class="action-btn">↗️ Share</button>
-                        </footer>
-                    </article>
-
-                    <article class="glass-panel post">
-                        <header class="post-header">
-                            <div class="post-meta">
-                                <h2>Behind the Scenes</h2>
-                                <span class="timestamp">2 days ago</span>
-                            </div>
-                            <span class="tag photo">Photo</span>
-                        </header>
-                        <div class="post-content">
-                            <p>The real magic happens when nobody's watching. Just me, the mic, and the vision. Let's
-                                get it. 🔥</p>
-                            <div class="media-container">
-                                <img src="assets/IMG_20260112_194126.jpg" alt="Behind the scenes">
-                                <div class="image-overlay">
-                                    <span>👁️ 2,100 views</span>
-                                </div>
-                            </div>
-                        </div>
-                        <footer class="post-footer">
-                            <button class="action-btn">❤️ 445</button>
-                            <button class="action-btn">💬 67</button>
-                            <button class="action-btn">🔖 Save</button>
-                            <button class="action-btn">↗️ Share</button>
-                        </footer>
-                    </article>
+                    <!-- Posts: injected from assets/data.js via renderPosts() -->
                 </main>
             </div>
         </div>
@@ -485,29 +323,7 @@
                 <button class="control-btn play-pause" id="expandedPlayBtn">▶</button>
                 <button class="control-btn" id="nextBtn">⏭</button>
             </div>
-            <div class="expanded-tracklist">
-                <div class="mobile-track-item" data-index="0">
-                    <span class="track-num">1</span>
-                    <div class="track-info">
-                        <span class="track-title">Awkward Moments</span>
-                        <span class="track-duration">3:24</span>
-                    </div>
-                </div>
-                <div class="mobile-track-item" data-index="1">
-                    <span class="track-num">2</span>
-                    <div class="track-info">
-                        <span class="track-title">7:30 PM</span>
-                        <span class="track-duration">2:48</span>
-                    </div>
-                </div>
-                <div class="mobile-track-item" data-index="2">
-                    <span class="track-num">3</span>
-                    <div class="track-info">
-                        <span class="track-title">Dark Spaces</span>
-                        <span class="track-duration">3:43</span>
-                    </div>
-                </div>
-            </div>
+            <div class="expanded-tracklist" id="mobileTrackList"></div>
         </div>
     </div>
 
@@ -767,8 +583,18 @@
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
 
-    <script src="assets/data.js"></script>
-    <script src="script.js?v=110"></script>
+    <script src="assets/data.js?v=111"></script>
+    <script src="js/overlay-utils.js?v=111"></script>
+    <script src="js/toast.js?v=111"></script>
+    <script src="js/theme-layout.js?v=111"></script>
+    <script src="js/particles.js?v=111"></script>
+    <script src="js/scroll-reveal.js?v=111"></script>
+    <script src="js/playlist.js?v=111"></script>
+    <script src="js/audio.js?v=111"></script>
+    <script src="js/modals.js?v=111"></script>
+    <script src="js/lightbox.js?v=111"></script>
+    <script src="js/posts.js?v=111"></script>
+    <script src="js/app-init.js?v=111"></script>
 </body>
 
 </html>

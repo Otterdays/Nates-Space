@@ -1,3 +1,5 @@
+<!-- PRESERVATION RULE: Never delete or replace content. Append or annotate only. -->
+
 # Nate's Space - Architecture
 
 ## Overview
@@ -7,19 +9,28 @@ Nate's Space is a static personal portfolio/social-style website built with vani
 
 ```
 NatesSpace/
-├── index.html          # Main HTML file - all markup
-├── styles.css          # All styles including themes and responsive
-├── script.js           # Interactions (Theming, Layouts, Lightbox, Audio)
+├── index.html          # Shell markup, modals, music player DOM, composer (feed slots empty; filled by JS)
+├── styles.css          # Themes, glass UI, responsive, animations
+├── js/                 # Runtime modules (loaded in order; see “JavaScript modules” below)
 ├── .nojekyll           # Prevents Jekyll processing on GitHub Pages
-├── convert.js          # (Dev) HEIC to JPG conversion script
-├── README.md           # Quick start guide
-└── DOCS/               # Documentation
-    ├── ARCHITECTURE.md # This file
-    ├── CHANGELOG.md    # Version history
-    ├── SBOM.md         # Assets and Security BOM
-    ├── SCRATCHPAD.md   # Active development notes
-    ├── SUMMARY.md      # Project status tracking
-    └── My_Thoughts.md  # Internal developer log
+├── .gitignore          # Ignores node_modules, *.wav, *.exe, etc.
+├── assets/
+│   ├── data.js         # NatesData: gallery metadata + posts (source of truth for feed)
+│   ├── *.jpg, *.mp4    # Media (paths referenced from HTML/data.js)
+│   └── music/          # EP tracks (mp3/m4a) referenced by players
+├── tools/
+│   ├── convert.js      # (Dev) CommonJS HEIC → JPG using heic-convert
+│   ├── convert.mjs     # (Dev) ESM variant
+│   └── convert_audio.bat # (Dev) WAV → M4A helper for local encoding
+├── README.md
+└── DOCS/
+    ├── ARCHITECTURE.md
+    ├── CHANGELOG.md
+    ├── SBOM.md
+    ├── SCRATCHPAD.md
+    ├── SUMMARY.md
+    ├── STYLE_GUIDE.md
+    └── My_Thoughts.md
 ```
 
 ## Design System
@@ -38,23 +49,59 @@ NatesSpace/
 - **Logo/Mono**: Space Mono (Google Fonts)
 
 ### Components
-1. **Glass Panel** - Frosted glass effect with blur, used for all containers.
-2. **Profile Card/Hero** - Desktop uses a sidebar card; Mobile uses a top hero section with background image.
-3. **Gallery Grid** - Interactive image grid with lightbox triggers.
-4. **Friends Grid (Creative Circle)** - Bubble-style avatars with hover effects.
-5. **Post Card** - Multi-type posts (Photo, Video, Update) with glassmorphism styling.
-6. **Image Lightbox (Facebook-style)**:
+1. **Particle layer** - `#particleCanvas` sits behind `.app-layout`; `js/particles.js` fills it with drifting accent-colored dots and resizes with the window.
+2. **Glass Panel** - Frosted glass effect with blur, used for all containers.
+3. **Profile Card/Hero** - Desktop uses a sidebar card; Mobile uses a top hero section with background image.
+4. **Gallery Grid** - Interactive image grid with lightbox triggers; metadata from `NatesData.images`.
+5. **Friends Grid (Creative Circle)** - Bubble-style avatars with hover effects.
+6. **Post Card** - Multi-type posts (Photo, Video, Update) built by `renderPosts()` from `NatesData.posts`.
+7. **Image Lightbox (Facebook-style)**:
    - Shared modal for all images.
    - Desktop: Two-column split (Image / Social Data).
    - Mobile: Vertical stack (Image / Bottom Sheet metadata).
-7. **Music Player**:
+   - Touch: horizontal swipe navigates prev/next image.
+8. **Music Player**:
    - Desktop: Sidebar mini-player + Apple Music Modal.
    - Mobile: Persistent bottom bar (Spotify-style) with expanded tracklist view.
+9. **Toast stack** - `#toastContainer` for Save/Share feedback.
 
 ### Layout & Logic
 - **Layout Toggles**: Desktop supports swapping sidebars or entering "Focus" mode (centered feed).
 - **Responsive Logic**: Media queries handle the transition from a 2-column desktop layout to a 1-column mobile stack. Mobile hides the layout toggle as it's not applicable.
-- **Cache Busting**: Manual version numbers in `index.html` (e.g., `?v=100`) ensure CSS/JS updates propagate immediately.
+- **Cache Busting**: Manual query string on `styles.css` and each `js/*.js` in `index.html` (currently `?v=111`) so updates beat CDN/browser caches.
+- **Feed pipeline**: `index.html` loads `assets/data.js` (defines `NatesData`), then `js/app-init.js` calls `renderPlaylist()` and `renderPosts()`. Static `article.post` nodes are no longer shipped; the feed is entirely data-driven when `NatesData` is present.
+
+### JavaScript modules (`js/`) — load order [added 2026-03-20]
+
+| File | Role |
+|------|------|
+| `overlay-utils.js` | `lockBodyScroll` / `unlockBodyScroll` (ref-counted) for modals |
+| `toast.js` | `showToast` (DOM-safe) |
+| `theme-layout.js` | Theme + layout toggles, hero / focus player visibility |
+| `particles.js` | `#particleCanvas` animation |
+| `scroll-reveal.js` | `window.revealObserver` + initial observe on gallery/friends |
+| `playlist.js` | `renderPlaylist()` — builds sidebar / focus / mobile rows from `NatesData.playlist` |
+| `audio.js` | Shared `<audio id="audioPlayer">`, `playTrack`, progress sync, mobile + focus chrome |
+| `modals.js` | Follow modal + Apple Music modal |
+| `lightbox.js` | Image lightbox (delegated clicks), video modal, swipe, keyboard |
+| `posts.js` | `renderPosts()` — DOM `createElement` feed from `NatesData.posts` |
+| `app-init.js` | Boot: playlist → posts → delegated `.action-btn` pulse + Save/Share |
+- **Scroll reveal**: `IntersectionObserver` adds `.visible` to `.scroll-reveal` elements (posts, gallery, friends); new posts get `.scroll-reveal` when rendered.
+
+### Runtime diagram (high level)
+
+```mermaid
+flowchart LR
+  HTML[index.html] --> Data[assets/data.js]
+  HTML --> CSS[styles.css]
+  HTML --> JS[js/*.js ordered]
+  Data --> JS
+  JS --> Playlist[renderPlaylist]
+  JS --> Feed[renderPosts]
+  JS --> Lightbox[Image / video modals]
+  JS --> Audio[EP players]
+  JS --> Canvas[particleCanvas]
+```
 
 ## Deployment
 1. Push to GitHub.
