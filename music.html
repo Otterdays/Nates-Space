@@ -55,14 +55,9 @@
                 <div class="music-library-intro">
                     <h1 class="music-library-title">Music library</h1>
                     <p class="music-library-sub">
-                        Tracks are listed from <code>assets/music/</code> and embedded in
-                        <code>assets/data.js</code> (between <code>AUTOGEN_MUSIC_SCAN</code> markers).
-                        After you add or remove files, run <code>node tools/scan-music.mjs --write</code>
-                        from the project folder, then reload. Pretty titles / EP order:
-                        <code>musicTrackOverrides</code> and <code>epTrackSrcs</code> in the same file.
-                        <strong>Tip:</strong> If the list is empty, you opened the page via <code>file://</code>
-                        without the embedded block — run the scan command above, or use
-                        <code>npx serve .</code> and open <code>http://localhost:3000/music.html</code>.
+                        Drop audio in <code>assets/music/</code>, then run
+                        <code>node tools/scan-music.mjs --apply</code> and reload with <strong>Ctrl+F5</strong>.
+                        Pretty titles: edit <code>MY_MUSIC_TITLES</code> in <code>js/music-files.js</code>.
                     </p>
                 </div>
                 <label class="music-search-wrap">
