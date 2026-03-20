@@ -12,7 +12,7 @@ NatesSpace/
 ├── index.html          # Feed shell; modals; EP player DOM; composer
 ├── music.html          # Full music library (all `musicCatalog` tracks + dedicated player)
 ├── styles.css          # Themes, glass UI, responsive, animations
-├── js/                 # Runtime modules + `music-catalog.generated.js` (folder scan; see tools/)
+├── js/                 # Runtime modules (music list lives in `assets/data.js` markers; see tools/)
 ├── .nojekyll           # Prevents Jekyll processing on GitHub Pages
 ├── .gitignore          # Ignores node_modules, *.wav, *.exe, etc.
 ├── assets/
@@ -23,7 +23,7 @@ NatesSpace/
 │   ├── convert.js      # (Dev) CommonJS HEIC → JPG using heic-convert
 │   ├── convert.mjs     # (Dev) ESM variant
 │   ├── convert_audio.bat # (Dev) WAV → M4A helper for local encoding
-│   └── scan-music.mjs  # (Dev) `node tools/scan-music.mjs --write` → refreshes `js/music-catalog.generated.js`
+│   └── scan-music.mjs  # (Dev) `node tools/scan-music.mjs --write` → patches `__MUSIC_CATALOG_SCAN` in `assets/data.js`
 ├── README.md
 └── DOCS/
     ├── ARCHITECTURE.md
@@ -70,7 +70,7 @@ NatesSpace/
 ### Layout & Logic
 - **Layout Toggles**: Desktop supports swapping sidebars or entering "Focus" mode (centered feed).
 - **Responsive Logic**: Media queries handle the transition from a 2-column desktop layout to a 1-column mobile stack. Mobile hides the layout toggle as it's not applicable.
-- **Cache Busting**: Manual query string on `styles.css` and each `js/*.js` in `index.html` / `music.html` (currently `?v=112`) so updates beat CDN/browser caches.
+- **Cache Busting**: Manual query string on `styles.css` and each `js/*.js` in `index.html` / `music.html` (currently `?v=114`) so updates beat CDN/browser caches.
 - **Feed pipeline**: `index.html` loads `assets/data.js` (defines `NatesData`), then `js/app-init.js` calls `renderPlaylist()` and `renderPosts()`. Static `article.post` nodes are no longer shipped; the feed is entirely data-driven when `NatesData` is present.
 
 ### JavaScript modules (`js/`) — load order [added 2026-03-20]
@@ -82,8 +82,7 @@ NatesSpace/
 | `theme-layout.js` | Theme + layout toggles, hero / focus player visibility |
 | `particles.js` | `#particleCanvas` animation |
 | `scroll-reveal.js` | `window.revealObserver` + initial observe on gallery/friends |
-| `music-catalog.generated.js` | **Generated** — `window.__MUSIC_CATALOG_SCAN` from `assets/music/*` (see `scan-music.mjs --write`) |
-| `music-catalog-merge.js` | `getMusicCatalogMerged()` + `getEpTracks()` (merges scan + `musicTrackOverrides` + `epTrackSrcs`) |
+| `music-catalog-merge.js` | `getMusicCatalogMerged()` + `getEpTracks()` (merges `__MUSIC_CATALOG_SCAN` in `data.js` + overrides + `epTrackSrcs`) |
 | `playlist.js` | `renderPlaylist()` — EP rows from `getEpTracks()` |
 | `music-page.js` | `music.html` only: full merged catalog + `#libraryAudio` dock player |
 | `audio.js` | Shared `<audio id="audioPlayer">`, `playTrack`, progress sync, mobile + focus chrome |

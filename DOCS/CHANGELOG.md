@@ -4,6 +4,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.5] - 2026-03-20
+
+### Fixed
+- **Music catalog + `file://`**: Browsers often block loading extra local `.js` files; the scan list now lives inside `assets/data.js` between `AUTOGEN_MUSIC_SCAN` markers (removed `js/music-catalog.generated.js`).
+- **`scan-music.mjs --write`**: Handles Windows CRLF when replacing markers.
+
 ## [1.1.4] - 2026-03-20
 
 ### Added

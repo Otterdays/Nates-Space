@@ -20,7 +20,7 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - [My_Thoughts.md](./My_Thoughts.md) - Internal developer reflections
 
 ## Current Status
-- **Version**: **v1.1.4** (2026-03-20) — music folder → `music-catalog.generated.js` + merge layer
+- **Version**: **v1.1.5** (2026-03-20) — music scan embedded in `data.js` (works with `file://`)
 - **Health**: ✅ Stable
 - **Next Milestone**: Content Expansion
 

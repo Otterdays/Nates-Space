@@ -1,7 +1,37 @@
 // Nate's Space Data Source
 //
-// Music: all files under assets/music/ are listed in js/music-catalog.generated.js
-// (refresh: node tools/scan-music.mjs --write). EP strip + overrides live here.
+// Music: folder listing is embedded below (between markers) so file:// works.
+// Refresh: from repo root run  node tools/scan-music.mjs --write
+// EP order + pretty titles: epTrackSrcs + musicTrackOverrides in NatesData.
+
+/* <AUTOGEN_MUSIC_SCAN> */
+window.__MUSIC_CATALOG_SCAN = [
+  {
+    "src": "assets/music/Akward Moments Natee V2 (M).mp3",
+    "title": "Akward Moments Natee V2 (M)",
+    "artist": "Natee",
+    "duration": "",
+    "format": "mp3",
+    "added": "2026-03-20"
+  },
+  {
+    "src": "assets/music/Dark Spaces Natee  V2.m4a",
+    "title": "Dark Spaces Natee  V2",
+    "artist": "Natee",
+    "duration": "",
+    "format": "m4a",
+    "added": "2026-03-20"
+  },
+  {
+    "src": "assets/music/Natee 730 PM V1 (M).m4a",
+    "title": "Natee 730 PM V1 (M)",
+    "artist": "Natee",
+    "duration": "",
+    "format": "m4a",
+    "added": "2026-03-20"
+  }
+];
+/* </AUTOGEN_MUSIC_SCAN> */
 
 const NatesData = {
     /**
