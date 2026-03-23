@@ -71,9 +71,19 @@
     var authBtn = document.getElementById('firebaseAuthBtn');
     var shareBtn = document.getElementById('composerShareBtn');
     var composerBody = document.getElementById('composerBody');
+    var postComposer = document.getElementById('postComposer');
 
     if (authBtn) {
         authBtn.removeAttribute('hidden');
+    }
+
+    function setComposerForUser(user) {
+        if (!postComposer) return;
+        if (user) {
+            postComposer.removeAttribute('hidden');
+        } else {
+            postComposer.setAttribute('hidden', '');
+        }
     }
 
     function setAuthButtonLabel(user) {
@@ -84,6 +94,7 @@
 
     auth.onAuthStateChanged(function (user) {
         setAuthButtonLabel(user);
+        setComposerForUser(user);
     });
 
     if (authBtn) {
