@@ -2,7 +2,7 @@
 // Web API keys are public; lock down with Firestore rules + Auth authorized domains.
 
 window.__FIREBASE_CONFIG__ = {
-    apiKey: 'AIzaSyAekIRlu9nK8-mPq9ypsbJuxVr7plQM3_o',
+    apiKey: 'AIzaSyAekiRlu9nK8-mPq9ypsbJuxVr7plQM3_o',
     authDomain: 'nateespace.firebaseapp.com',
     projectId: 'nateespace',
     storageBucket: 'nateespace.firebasestorage.app',
