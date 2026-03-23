@@ -2,7 +2,14 @@
 
 # Nate's Space - Scratchpad
 
-## Current Session: 2026-03-20 (MUSIC_GUIDE + doc sweep)
+## Current Session: 2026-03-20 (theme + mobile polish)
+
+### Last actions
+- [x] Brighter default dark theme in `styles.css` (new surface vars); mobile safe-area + `viewport-fit=cover` on `index.html` / `music.html`; music dock + light-mode mobile/list tweaks; cache `v=122`.
+
+---
+
+## Session: 2026-03-20 (MUSIC_GUIDE + doc sweep)
 
 ### Last actions
 - [x] Added **DOCS/MUSIC_GUIDE.md**; linked from README, SUMMARY, ARCHITECTURE, SBOM, STYLE_GUIDE; fixed stale music references in ARCHITECTURE; version **v1.2.1**.

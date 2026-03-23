@@ -21,7 +21,7 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - [My_Thoughts.md](./My_Thoughts.md) - Internal developer reflections
 
 ## Current Status
-- **Version**: **v1.2.1** (2026-03-20) — MUSIC_GUIDE + doc cross-links
+- **Version**: **v1.2.2** (2026-03-20) — brighter default theme + mobile safe-area / light mobile polish
 - **Health**: ✅ Stable
 - **Next Milestone**: Content Expansion
 

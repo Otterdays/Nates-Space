@@ -4,6 +4,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.2] - 2026-03-20
+
+### Changed
+- **Default (dark) theme**: Slightly brighter base (`--bg-primary` #151522, stronger glass/text tokens, softer panel shadow, richer background orbs).
+- **Mobile / notched devices**: `viewport-fit=cover`; safe-area padding on feed container, nav, bottom player, expanded player, music dock, and music page shell; `100dvh` on `.app-layout` / `.music-page-body`; light-mode fixes for mobile track list + progress bar + music library rows.
+
+### Technical
+- **CSS**: `--bg-elevated`, `--player-gradient-start/end` for theme-aware mobile bar / full-screen player / toasts / image modal sheet; hero overlay tints for light theme.
+
 ## [1.2.1] - 2026-03-20
 
 ### Added

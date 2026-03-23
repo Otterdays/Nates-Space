@@ -40,11 +40,14 @@ NatesSpace/
 ### Color Palette
 | Variable | Dark Mode | Light Mode |
 |----------|-----------|------------|
-| `--bg-primary` | `#0a0a0f` | `#f5f7fa` |
-| `--bg-glass` | `rgba(15,15,20,0.7)` | `rgba(255,255,255,0.8)` |
+| `--bg-primary` | `#151522` | `#f5f7fa` |
+| `--bg-glass` | `rgba(30,30,42,0.78)` | `rgba(255,255,255,0.8)` |
+| `--bg-elevated` | `rgba(26,26,36,0.97)` (mobile bar, toasts, modal sheet) | `rgba(255,255,255,0.96)` |
 | `--accent-color` | `#00d4aa` (teal) | same |
 | `--accent-secondary` | `#00a8cc` (cyan) | same |
 | `--accent-tertiary` | `#7b61ff` (purple) | same |
+
+[AMENDED 2026-03-20]: Default dark base brightened (`#0a0a0f` → `#151522`); added `--bg-elevated` and player gradient tokens for theme-consistent mobile surfaces. `index.html` / `music.html` use `viewport-fit=cover` + `env(safe-area-inset-*)` in `styles.css` for notched devices.
 
 ### Typography
 - **Headings/Body**: Outfit (Google Fonts)
