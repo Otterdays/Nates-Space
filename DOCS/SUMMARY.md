@@ -21,7 +21,8 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - [My_Thoughts.md](./My_Thoughts.md) - Internal developer reflections
 
 ## Current Status
-- **Version**: **v1.2.2** (2026-03-20) — brighter default theme + mobile safe-area / light mobile polish
+- **Version**: **v1.2.3** (2026-03-23) — optional Firebase Firestore live feed + composer posting (see `js/firebase-feed.js`, `firestore.rules`, `DOCS/SCRATCHPAD.md` checklist).
+- [AMENDED 2026-03-23]: Prior line retained for history — **v1.2.2** (2026-03-20) — brighter default theme + mobile safe-area / light mobile polish
 - **Health**: ✅ Stable
 - **Next Milestone**: Content Expansion
 
@@ -34,7 +35,7 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - 🎥 **Video Support**: Integrated video posts with custom play overlays.
 - 🍎 **Music Integration**: Native Apple Music embeds and social links.
 - 🎚️ **Music** (`music.html`): Filenames listed in `js/music-files.js` → plays from `assets/music/`.
-- 📰 **Data-driven feed**: Posts rendered from `assets/data.js` via `renderPosts()`.
+- 📰 **Data-driven feed**: Posts rendered from `assets/data.js` via `renderPosts()`; optional merge with Firestore when `js/firebase-config.js` is configured.
 - 🔽 **Scroll reveal**: IntersectionObserver animates posts and panels into view.
 
 ## Deployment

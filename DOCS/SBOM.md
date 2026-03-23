@@ -14,6 +14,9 @@ All site logic ships as ordered IIFE scripts under `js/` (see `DOCS/ARCHITECTURE
 |----------|------|----------|--------|---------------|
 | Outfit Font | Typography | Google Fonts | fonts.googleapis.com | 2026-03-20 |
 | Space Mono Font | Typography | Google Fonts | fonts.googleapis.com | 2026-03-20 |
+| Firebase App (compat) | JS SDK | Google | www.gstatic.com | 2026-03-23 |
+| Firebase Auth (compat) | JS SDK | Google | www.gstatic.com | 2026-03-23 |
+| Firebase Firestore (compat) | JS SDK | Google | www.gstatic.com | 2026-03-23 |
 
 ## Local Media Assets
 

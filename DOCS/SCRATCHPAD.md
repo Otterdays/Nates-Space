@@ -2,6 +2,20 @@
 
 # Nate's Space - Scratchpad
 
+## Session: 2026-03-23 (Firebase-backed feed)
+
+### Firebase setup checklist (operator)
+- [ ] Create Firebase project; enable **Firestore** + **Authentication** (Google provider).
+- [ ] Add **Authorized domains**: `localhost`, your Vercel host (e.g. `natee.vercel.app`).
+- [ ] Copy `js/firebase-config.example.js` → fill values in `js/firebase-config.js` (or keep `null` for static-only builds).
+- [ ] In `firestore.rules`, replace `REPLACE_WITH_OWNER_FIREBASE_AUTH_UID` with your Auth **User UID**; deploy: `firebase deploy --only firestore:rules` or paste rules in Console.
+- [ ] Confirm first post from site as signed-in owner; confirm unsigned / wrong user cannot `create` (rules).
+
+### Last actions
+- [x] Added `firestore.rules`, `firebase.json`, `js/firebase-config*.js`, `js/firebase-feed.js`; wired `index.html` (composer + nav auth + script order); `styles.css` `.nav-auth-btn`; cache `v=123`.
+
+---
+
 ## Current Session: 2026-03-20 (theme + mobile polish)
 
 ### Last actions

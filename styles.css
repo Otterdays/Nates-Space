@@ -400,6 +400,28 @@ html {
 .nav-controls {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-auth-btn {
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.45rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.nav-auth-btn:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  background: rgba(0, 212, 170, 0.12);
 }
 
 .nav-btn {

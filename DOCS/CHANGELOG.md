@@ -4,6 +4,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.3] - 2026-03-23
+
+### Added
+- **Firebase feed (optional)**: Firestore `posts` collection + Google sign-in for owner-only writes; `js/firebase-feed.js` merges live posts with static `assets/data.js`; composer **Share** persists text updates. CDN: Firebase compat 10.14.1.
+- **`firestore.rules`** + **`firebase.json`** for `firebase deploy --only firestore:rules`; **`js/firebase-config.example.js`** and committed **`js/firebase-config.js`** (`null` = static-only until filled).
+
+### Changed
+- **Composer**: `id` / `name` / `maxlength` on textarea; `type="button"` on composer controls; nav **Sign in** / **Sign out** (`#firebaseAuthBtn`, hidden until Firebase config valid).
+
 ## [1.2.2] - 2026-03-20
 
 ### Changed

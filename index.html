@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=122">
+    <link rel="stylesheet" href="styles.css?v=123">
 </head>
 
 <body>
@@ -43,6 +43,8 @@
                 </div>
             </div>
             <div class="nav-controls">
+                <button type="button" class="nav-auth-btn" id="firebaseAuthBtn" hidden
+                    title="Sign in with Google to post">Sign in</button>
                 <!-- Layout Toggle -->
                 <button class="nav-btn" id="layoutToggle" title="Change Layout">
                     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -266,14 +268,15 @@
 
                     <!-- Post Composer -->
                     <div class="glass-panel composer">
-                        <textarea placeholder="Share what you're creating..."></textarea>
+                        <textarea id="composerBody" name="composerBody" rows="3" maxlength="2000"
+                            placeholder="Share what you're creating..."></textarea>
                         <div class="composer-actions">
                             <div class="composer-tools">
-                                <button class="tool-btn" title="Add Image">🖼️</button>
-                                <button class="tool-btn" title="Add Link">🔗</button>
-                                <button class="tool-btn" title="Add Poll">📊</button>
+                                <button type="button" class="tool-btn" title="Add Image">🖼️</button>
+                                <button type="button" class="tool-btn" title="Add Link">🔗</button>
+                                <button type="button" class="tool-btn" title="Add Poll">📊</button>
                             </div>
-                            <button class="btn primary">Share</button>
+                            <button type="button" class="btn primary" id="composerShareBtn">Share</button>
                         </div>
                     </div>
 
@@ -587,19 +590,24 @@
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
 
-    <script src="assets/data.js?v=122"></script>
-    <script src="js/music-files.js?v=122"></script>
-    <script src="js/overlay-utils.js?v=122"></script>
-    <script src="js/toast.js?v=122"></script>
-    <script src="js/theme-layout.js?v=122"></script>
-    <script src="js/particles.js?v=122"></script>
-    <script src="js/scroll-reveal.js?v=122"></script>
-    <script src="js/playlist.js?v=122"></script>
-    <script src="js/audio.js?v=122"></script>
-    <script src="js/modals.js?v=122"></script>
-    <script src="js/lightbox.js?v=122"></script>
-    <script src="js/posts.js?v=122"></script>
-    <script src="js/app-init.js?v=122"></script>
+    <script src="assets/data.js?v=123"></script>
+    <script src="js/music-files.js?v=123"></script>
+    <script src="js/overlay-utils.js?v=123"></script>
+    <script src="js/toast.js?v=123"></script>
+    <script src="js/theme-layout.js?v=123"></script>
+    <script src="js/particles.js?v=123"></script>
+    <script src="js/scroll-reveal.js?v=123"></script>
+    <script src="js/playlist.js?v=123"></script>
+    <script src="js/audio.js?v=123"></script>
+    <script src="js/modals.js?v=123"></script>
+    <script src="js/lightbox.js?v=123"></script>
+    <script src="js/posts.js?v=123"></script>
+    <script src="js/app-init.js?v=123"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js?v=123"></script>
+    <script src="js/firebase-feed.js?v=123"></script>
 </body>
 
 </html>
