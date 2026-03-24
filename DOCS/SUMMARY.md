@@ -12,6 +12,7 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - **Build**: None required - just push and deploy.
 
 ## Quick Links
+- [FIREBASE_GUIDE.md](./FIREBASE_GUIDE.md) - **Firebase feed**: UID for rules, Auth domains, config checklist
 - [MUSIC_GUIDE.md](./MUSIC_GUIDE.md) - **Add / update tracks** (`assets/music/` + `scan-music.mjs --apply`)
 - [CHANGELOG.md](./CHANGELOG.md) - Version history and features
 - [ARCHITECTURE.md](./ARCHITECTURE.md) - Technical structure and design system
@@ -21,8 +22,9 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - [My_Thoughts.md](./My_Thoughts.md) - Internal developer reflections
 
 ## Current Status
-- **Version**: **v1.2.3** (2026-03-23) — optional Firebase Firestore live feed + composer posting (see `js/firebase-feed.js`, `firestore.rules`, `DOCS/SCRATCHPAD.md` checklist).
-- [AMENDED 2026-03-23]: Prior line retained for history — **v1.2.2** (2026-03-20) — brighter default theme + mobile safe-area / light mobile polish
+- **Version**: **v1.2.4** (2026-03-23) — **FIREBASE_GUIDE.md** + SCRATCHPAD updates; Firebase Auth flow verified on deployed site; finish owner UID in `firestore.rules` per guide.
+- [AMENDED 2026-03-23]: **v1.2.3** — optional Firebase Firestore live feed + composer (`js/firebase-feed.js`, `firestore.rules`).
+- [AMENDED 2026-03-23]: **v1.2.2** (2026-03-20) — brighter default theme + mobile safe-area / light mobile polish
 - **Health**: ✅ Stable
 - **Next Milestone**: Content Expansion
 

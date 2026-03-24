@@ -2,12 +2,23 @@
 
 # Nate's Space - Scratchpad
 
+## Session: 2026-03-23 (Firebase live + docs)
+
+### Status
+- [x] Auth + authorized domain flow verified on Vercel (`natee`-style host).
+- [ ] **Owner UID in rules**: copy **User UID** from **Authentication → Users** into `firestore.rules` (both placeholders) → **Firestore → Rules → Publish**. Step-by-step: [FIREBASE_GUIDE.md](./FIREBASE_GUIDE.md).
+
+### Last actions
+- [x] Added **DOCS/FIREBASE_GUIDE.md** (UID, rules, console checklist); linked from SUMMARY + ARCHITECTURE; CHANGELOG **v1.2.4**.
+
+---
+
 ## Session: 2026-03-23 (Firebase-backed feed)
 
 ### Firebase setup checklist (operator)
-- [ ] Create Firebase project; enable **Firestore** + **Authentication** (Google provider).
-- [ ] Add **Authorized domains**: `localhost`, your Vercel host (e.g. `natee.vercel.app`).
-- [ ] Copy `js/firebase-config.example.js` → fill values in `js/firebase-config.js` (or keep `null` for static-only builds).
+- [x] Create Firebase project; enable **Firestore** + **Authentication** (Google provider).
+- [x] Add **Authorized domains**: `localhost`, your Vercel host (e.g. `natee.vercel.app`).
+- [x] Copy `js/firebase-config.example.js` → fill values in `js/firebase-config.js` (or keep `null` for static-only builds).
 - [ ] In `firestore.rules`, replace `REPLACE_WITH_OWNER_FIREBASE_AUTH_UID` with your Auth **User UID**; deploy: `firebase deploy --only firestore:rules` or paste rules in Console.
 - [ ] Confirm first post from site as signed-in owner; confirm unsigned / wrong user cannot `create` (rules).
 

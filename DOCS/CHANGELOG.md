@@ -4,6 +4,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.4] - 2026-03-23
+
+### Added
+- **DOCS/FIREBASE_GUIDE.md** — User UID for `firestore.rules`, authorized domains, config parity, API key notes; linked from SUMMARY and ARCHITECTURE.
+
+### Changed
+- **DOCS**: SCRATCHPAD Firebase checklist marked done where verified; open item = paste owner UID + publish rules.
+
 ## [1.2.3] - 2026-03-23
 
 ### Added

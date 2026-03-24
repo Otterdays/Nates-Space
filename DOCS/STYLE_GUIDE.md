@@ -51,6 +51,8 @@ The section **JavaScript (`script.js`)** above still describes naming and discip
 
 **Music [2026-03-20]:** Full workflow, tables, and troubleshooting → **[MUSIC_GUIDE.md](./MUSIC_GUIDE.md)**. In code: `js/music-files.js` (`MY_MUSIC_FILES` between markers, optional `MY_MUSIC_TITLES` / `MY_EP_FILES`); refresh list with `node tools/scan-music.mjs --apply`.
 
+**Firebase [2026-03-23]:** Operator setup (User UID in `firestore.rules`, Auth domains, config) → **[FIREBASE_GUIDE.md](./FIREBASE_GUIDE.md)**. In code: `js/firebase-config.js`, `js/firebase-feed.js`; trace tags may reference SCRATCHPAD / ARCHITECTURE.
+
 ## Documentation (`DOCS/`)
 
 - **Workflow**: See user/project rules — update `SCRATCHPAD.md` and `SBOM.md` when changing assets or dependencies.

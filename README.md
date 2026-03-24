@@ -45,6 +45,7 @@ Detailed information is available in the `DOCS/` directory:
 - 📓 **[Scratchpad](./DOCS/SCRATCHPAD.md)**: Active development notes and history.
 - 📐 **[Style guide](./DOCS/STYLE_GUIDE.md)**: Conventions for JS/CSS/data and trace tags.
 - 🎵 **[Music guide](./DOCS/MUSIC_GUIDE.md)**: Put files in `assets/music/`, run `node tools/scan-music.mjs --apply`, reload.
+- 🔥 **[Firebase guide](./DOCS/FIREBASE_GUIDE.md)**: Live feed / Auth / Firestore rules and your **User UID** for owner posting.
 
 ## 🛠️ Customization
 

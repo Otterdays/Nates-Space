@@ -24,10 +24,13 @@ NatesSpace/
 │   ├── convert.mjs     # (Dev) ESM variant
 │   ├── convert_audio.bat # (Dev) WAV → M4A helper for local encoding
 │   └── scan-music.mjs  # (Dev) `node tools/scan-music.mjs --apply` patches `MY_MUSIC_FILES` block
+├── firestore.rules     # (Optional) Firestore security rules for `posts`
+├── firebase.json       # (Optional) `firebase deploy --only firestore:rules`
 ├── README.md
 └── DOCS/
     ├── ARCHITECTURE.md
     ├── CHANGELOG.md
+    ├── FIREBASE_GUIDE.md
     ├── SBOM.md
     ├── SCRATCHPAD.md
     ├── SUMMARY.md
@@ -76,6 +79,7 @@ NatesSpace/
 - **Responsive Logic**: Media queries handle the transition from a 2-column desktop layout to a 1-column mobile stack. Mobile hides the layout toggle as it's not applicable.
 - **Cache Busting**: Manual query string on `styles.css` and each `js/*.js` in `index.html` / `music.html` (e.g. `?v=121` — bump when shipping asset changes) so updates beat CDN/browser caches.
 - **Feed pipeline**: `index.html` loads `assets/data.js` (`NatesData`) and **`js/music-files.js`** (tracks), then `js/app-init.js` calls `renderPlaylist()` and `renderPosts()`. Posts are data-driven from `NatesData.posts`; music list is **not** in `data.js`.
+- [AMENDED 2026-03-23]: Optional **Firebase** path after `app-init`: CDN compat SDK → `js/firebase-config.js` → `js/firebase-feed.js` subscribes to Firestore collection **`posts`** and merges with the static seed; Google Auth; composer hidden until signed in. Rules in repo root **`firestore.rules`**. Operator steps: [FIREBASE_GUIDE.md](./FIREBASE_GUIDE.md).
 
 ### JavaScript modules (`js/`) — load order [added 2026-03-20]
 
@@ -94,6 +98,8 @@ NatesSpace/
 | `lightbox.js` | Image lightbox (delegated clicks), video modal, swipe, keyboard |
 | `posts.js` | `renderPosts()` — DOM `createElement` feed from `NatesData.posts` |
 | `app-init.js` | Boot: playlist → posts → delegated `.action-btn` pulse + Save/Share |
+| `firebase-config.js` | `window.__FIREBASE_CONFIG__` (from Firebase Console web app); `null` disables feed |
+| `firebase-feed.js` | Firestore `posts` + Auth + composer **Share**; merges into `NatesData.posts` before `renderPosts()` |
 - **Scroll reveal**: `IntersectionObserver` adds `.visible` to `.scroll-reveal` elements (posts, gallery, friends); new posts get `.scroll-reveal` when rendered.
 
 ### Runtime diagram (high level)
