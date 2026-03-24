@@ -16,6 +16,7 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - [FIREBASE_GUIDE.md](./FIREBASE_GUIDE.md) - **Firebase feed**: UID for rules, Auth domains, config checklist
 - [MUSIC_GUIDE.md](./MUSIC_GUIDE.md) - **Add / update tracks** (`assets/music/` + `scan-music.mjs --apply`)
 - **Live page:** [`platforms.html`](../platforms.html) — indie/music platform directory (also in site nav)
+- **Admin (owner):** [`admin.html`](../admin.html) — moderation UI (not in nav; see [FIREBASE_GUIDE.md](./FIREBASE_GUIDE.md))
 - [CHANGELOG.md](./CHANGELOG.md) - Version history and features
 - [ARCHITECTURE.md](./ARCHITECTURE.md) - Technical structure and design system
 - [SBOM.md](./SBOM.md) - Assets and security verification
@@ -24,7 +25,8 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - [My_Thoughts.md](./My_Thoughts.md) - Internal developer reflections
 
 ## Current Status
-- **Version**: **v1.2.9** (2026-03-23) — **`platforms.html`** (indie/music platform directory) + Vercel site link; cache `v=129`.
+- **Version**: **v1.3.0** (2026-03-24) — **`admin.html`** owner moderation + comment-delete rules; cache `v=130`.
+- [AMENDED 2026-03-24]: **v1.2.9** — **`platforms.html`** + Vercel site link; cache `v=129`.
 - [AMENDED 2026-03-23]: **v1.2.8** — feed pagination; cache `v=128`.
 - [AMENDED 2026-03-23]: **v1.2.7** — likes + comments; cache `v=127`.
 - [AMENDED 2026-03-23]: **v1.2.6** — `window.NatesData` export (Issue G); cache `v=126`.

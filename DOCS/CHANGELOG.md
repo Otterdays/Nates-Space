@@ -4,6 +4,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2026-03-24
+
+### Added
+- **`admin.html`** + **`js/admin-panel.js`**: owner-only Google sign-in; list Firestore posts (paged); delete post (+ comments batch); manage comments (delete + sync `stats.comments`). Not linked in public nav (bookmark `/admin.html`).
+
+### Changed
+- **`firestore.rules`**: owner may **delete** comment documents on `posts/{postId}/comments/{commentId}`.
+- **Site cache** `?v=130` on `index.html`, `music.html`, `platforms.html`, admin assets.
+
 ## [1.2.9] - 2026-03-23
 
 ### Added

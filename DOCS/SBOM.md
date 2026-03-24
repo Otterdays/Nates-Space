@@ -8,6 +8,8 @@ This project is built using a **zero npm dependency** philosophy for the product
 ### Production JavaScript (2026-03-20)
 All site logic ships as ordered IIFE scripts under `js/` (see `DOCS/ARCHITECTURE.md` — “JavaScript modules”). No minifier or bundler in repo; behavior depends on load order in `index.html`.
 
+[AMENDED 2026-03-24]: **`js/admin-panel.js`** + **`admin.html`** — owner-only Firestore moderation UI (same Firebase compat CDNs as `index.html`); not part of the public feed bundle.
+
 [AMENDED 2026-03-23]: **Agent docs** — onboarding and incident logs live in `DOCS/AGENT_ONBOARDING.md` and `DOCS/debugs/debug_*.md` (see SBOM “Documentation” is not SBOM-technical but cross-linked here for discoverability).
 
 ## External Resources (Trusted CDNs)

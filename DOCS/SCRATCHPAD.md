@@ -2,6 +2,14 @@
 
 # Nate's Space - Scratchpad
 
+## Session: 2026-03-24 (admin panel + doc recovery)
+
+### Last actions
+- [x] Restored **`DOCS/SUMMARY.md`** + **`DOCS/CHANGELOG.md`** from git after mistaken deletion.
+- [x] **`admin.html`** / **`js/admin-panel.js`**, **`firestore.rules`** owner comment delete, styles, cache **v=130**; **CHANGELOG v1.3.0**, **SUMMARY**, **FIREBASE_GUIDE** admin section.
+
+---
+
 ## Session: 2026-03-23 (platforms page + site link)
 
 ### Last actions

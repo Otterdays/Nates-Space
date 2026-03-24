@@ -10,6 +10,7 @@ How the optional live feed works and how to finish **owner-only** Firestore rule
 |------|------|
 | [`js/firebase-config.js`](../js/firebase-config.js) | `window.__FIREBASE_CONFIG__` — must match **Firebase Console → Project settings → Your apps → Web** (same web app). |
 | [`js/firebase-feed.js`](../js/firebase-feed.js) | Initializes Firebase, Google sign-in, Firestore `posts` listener, composer **Share**. |
+| [`admin.html`](../admin.html) + [`js/admin-panel.js`](../js/admin-panel.js) | Owner-only moderation UI (list/delete posts; delete comments). **Not** linked in public nav — bookmark the URL. |
 | [`firestore.rules`](../firestore.rules) | Security rules: public read on `posts`; creates/updates/deletes only for the **User UID** you embed in the rules. |
 | [`firebase.json`](../firebase.json) | Optional: `firebase deploy --only firestore:rules` |
 
@@ -49,8 +50,14 @@ When Firebase config is valid, the post composer is **hidden** until you are sig
 - **UI:** Firestore-backed cards (`data-firebase-post-id` on `article.post`) get ♡/♥ like, 💬 toggles a **comments panel** (list + input). Static seed posts from `assets/data.js` show dimmed actions (display-only counts).
 - **Likes:** Client runs `FieldValue.increment(1)` on `stats.likes`. **Session dedupe:** `sessionStorage` key `natespace_liked_posts_v1` (one like per post ID per browser tab session).
 - **Comments:** Subcollection `posts/{postId}/comments` with `text`, `authorName`, `createdAt` (server timestamp). Adding a comment uses a **batch**: new comment doc + `stats.comments` increment.
-- **Rules:** See [`firestore.rules`](../firestore.rules) — owner retains create/delete on posts and full `update`; **any signed-out or signed-in client** may `update` a post **only** when `diff` affects `stats` alone and either likes or comments goes up by **exactly 1** (anti-bulk in one write). Comments: public **read** + **create** with field validation.
+- **Rules:** See [`firestore.rules`](../firestore.rules) — owner retains create/delete on posts and full `update`; **any signed-out or signed-in client** may `update` a post **only** when `diff` affects `stats` alone and either likes or comments goes up by **exactly 1** (anti-bulk in one write). Comments: public **read** + **create** with field validation; **owner** may **delete** comments (for [`admin.html`](../admin.html)).
 - **Indexes:** If the browser console shows a Firestore link to create an index for `comments` + `createdAt`, click it once and deploy the index.
+
+## Admin panel (owner)
+
+- **URL:** `/admin.html` on your deployed host (same Firebase web app + authorized domain as the main site).
+- **Access:** Sign in with the **same Google account** whose Auth **User UID** matches the owner string in [`firestore.rules`](../firestore.rules) and in `OWNER_UID` inside [`js/admin-panel.js`](../js/admin-panel.js). The UI hides tools for non-owners; **Firestore rules** still enforce writes.
+- **Publish rules** after pulling comment-delete changes: Console → Firestore → Rules → **Publish** (or `firebase deploy --only firestore:rules`).
 
 ## Related
 

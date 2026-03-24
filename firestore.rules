@@ -51,7 +51,9 @@ service cloud.firestore {
           && request.resource.data.authorName is string
           && request.resource.data.authorName.size() <= 120
           && request.resource.data.createdAt is timestamp;
-        allow update, delete: if false;
+        allow update: if false;
+        allow delete: if request.auth != null
+          && request.auth.uid == '7gTTl2LM8mS2jrByUabHlaRgC4J2';
       }
     }
   }

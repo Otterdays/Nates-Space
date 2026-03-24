@@ -838,6 +838,131 @@ a.btn {
   background: rgba(15, 23, 42, 0.04);
 }
 
+/* ===== Admin panel ===== */
+.admin-meta {
+  margin: 0.3rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.admin-access-panel,
+.admin-panel {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.admin-notice-title {
+  margin: 0 0 0.45rem;
+  font-weight: 700;
+}
+
+.admin-notice-body {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.admin-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.admin-post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.admin-post-card {
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0.85rem 0.9rem;
+}
+
+.admin-post-title {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+}
+
+.admin-post-meta,
+.admin-post-stats {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.admin-post-content {
+  margin: 0.45rem 0 0.5rem;
+  line-height: 1.45;
+  font-size: 0.86rem;
+}
+
+.admin-post-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-danger-btn {
+  border-color: rgba(255, 111, 111, 0.55);
+  color: #ff9e9e;
+}
+
+.admin-danger-btn:hover {
+  border-color: #ff6f6f;
+  color: #ffd4d4;
+  background: rgba(255, 111, 111, 0.12);
+}
+
+.admin-comments-wrap {
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.admin-comment-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.6rem;
+  align-items: flex-start;
+}
+
+.admin-comment-body {
+  min-width: 0;
+}
+
+.admin-comment-text,
+.admin-comment-meta,
+.admin-comment-empty {
+  margin: 0;
+}
+
+.admin-comment-text {
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.admin-comment-meta,
+.admin-comment-empty {
+  margin-top: 0.2rem;
+  color: var(--text-secondary);
+  font-size: 0.74rem;
+}
+
+[data-theme="light"] .admin-post-card {
+  background: rgba(15, 23, 42, 0.04);
+}
+
 /* ===== Gallery Panel ===== */
 .gallery-panel {
   padding: 1.25rem;
