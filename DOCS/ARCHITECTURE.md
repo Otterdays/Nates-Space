@@ -28,8 +28,10 @@ NatesSpace/
 ├── firebase.json       # (Optional) `firebase deploy --only firestore:rules`
 ├── README.md
 └── DOCS/
+    ├── AGENT_ONBOARDING.md   # Agents: read order, triage, debug log index
     ├── ARCHITECTURE.md
     ├── CHANGELOG.md
+    ├── debugs/               # Dated incident logs (debug_YYYY-MM-DD_*.md)
     ├── FIREBASE_GUIDE.md
     ├── SBOM.md
     ├── SCRATCHPAD.md

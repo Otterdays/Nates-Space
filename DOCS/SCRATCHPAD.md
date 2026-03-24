@@ -2,6 +2,15 @@
 
 # Nate's Space - Scratchpad
 
+## Session: 2026-03-23 (Agent onboarding + debug log)
+
+### Last actions
+- [x] **DOCS/AGENT_ONBOARDING.md** — read-before-edit order, triage table, `DOCS/debugs/` index, git/doc rules.
+- [x] **DOCS/debugs/debug_2026-03-23_firebase-feed-feed-visibility.md** — full Firebase rollout timeline (keys, Auth, domains, rules, invisible posts fix).
+- [x] Linked from SUMMARY, README, STYLE_GUIDE, ARCHITECTURE tree; CHANGELOG **v1.2.5**.
+
+---
+
 ## Session: 2026-03-23 (Firebase live + docs)
 
 ### Status

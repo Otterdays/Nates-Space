@@ -4,6 +4,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.5] - 2026-03-23
+
+### Added
+- **DOCS/AGENT_ONBOARDING.md** — agent read order, symptom→cause triage, git/doc rules, index of `DOCS/debugs/` logs.
+- **DOCS/debugs/debug_2026-03-23_firebase-feed-feed-visibility.md** — chronological incident log (API key typos, Auth enable, authorized domains, rules, invisible `scroll-reveal` posts, composer gating).
+
+### Changed
+- **SUMMARY.md** (hosting line + Quick Links), **README.md**, **STYLE_GUIDE.md**, **SCRATCHPAD.md**, **ARCHITECTURE.md** (tree): link onboarding + debug log.
+
 ## [1.2.4] - 2026-03-23
 
 ### Fixed

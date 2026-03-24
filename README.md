@@ -2,7 +2,7 @@
 
 A premium personal portal and social-style portfolio. Built with pure HTML5, CSS3, and Vanilla JavaScript—no frameworks, no build steps, just pure performance.
 
-![Version](https://img.shields.io/badge/version-1.2.2-00d4aa)
+![Version](https://img.shields.io/badge/version-1.2.5-00d4aa)
 ![No Dependencies](https://img.shields.io/badge/dependencies-0-success)
 
 ## ✨ Latest Features
@@ -38,6 +38,7 @@ python -m http.server
 ## 📁 Project Documentation
 
 Detailed information is available in the `DOCS/` directory:
+- 🤖 **[Agent onboarding](./DOCS/AGENT_ONBOARDING.md)**: **Read this first** — workflow, triage when things break, links to dated debug logs (`DOCS/debugs/`).
 - 📊 **[Summary](./DOCS/SUMMARY.md)**: High-level status and project goals.
 - 📜 **[Changelog](./DOCS/CHANGELOG.md)**: Detailed version history.
 - 🏗️ **[Architecture](./DOCS/ARCHITECTURE.md)**: Design system, layout logic, and components.

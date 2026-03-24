@@ -105,3 +105,7 @@ const NatesData = {
         }
     ]
 };
+
+// [TRACE: DOCS/debugs/debug_2026-03-23_firebase-feed-feed-visibility.md]
+// Expose the data object for legacy scripts that read `window.NatesData`.
+window.NatesData = NatesData;

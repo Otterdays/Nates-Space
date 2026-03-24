@@ -45,5 +45,6 @@ When Firebase config is valid, the post composer is **hidden** until you are sig
 
 ## Related
 
+- **Agents / incidents:** [AGENT_ONBOARDING.md](./AGENT_ONBOARDING.md) — triage table; [debugs/debug_2026-03-23_firebase-feed-feed-visibility.md](./debugs/debug_2026-03-23_firebase-feed-feed-visibility.md) — what broke and when (2026-03-23).
 - Active notes: [SCRATCHPAD.md](./SCRATCHPAD.md)  
 - Feed rendering: [ARCHITECTURE.md](./ARCHITECTURE.md) (feed pipeline + `firebase-feed.js`)

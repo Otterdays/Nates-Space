@@ -53,6 +53,8 @@ The section **JavaScript (`script.js`)** above still describes naming and discip
 
 **Firebase [2026-03-23]:** Operator setup (User UID in `firestore.rules`, Auth domains, config) → **[FIREBASE_GUIDE.md](./FIREBASE_GUIDE.md)**. In code: `js/firebase-config.js`, `js/firebase-feed.js`; trace tags may reference SCRATCHPAD / ARCHITECTURE.
 
+**Agents [2026-03-23]:** Onboarding, triage when users hit production issues, and **dated debug narratives** → **[AGENT_ONBOARDING.md](./AGENT_ONBOARDING.md)** and **`DOCS/debugs/debug_*.md`**. Add a new debug file per incident cluster; link it from AGENT_ONBOARDING’s log table.
+
 ## Documentation (`DOCS/`)
 
 - **Workflow**: See user/project rules — update `SCRATCHPAD.md` and `SBOM.md` when changing assets or dependencies.

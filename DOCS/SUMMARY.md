@@ -8,10 +8,11 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 ## Tech Stack
 - **Frontend**: Pure HTML5, CSS3, JavaScript (no frameworks)
 - **Fonts**: Google Fonts (Outfit, Space Mono)
-- **Hosting**: GitHub Pages (static)
+- **Hosting**: Static (e.g. **Vercel**, GitHub Pages) — no server runtime in repo
 - **Build**: None required - just push and deploy.
 
 ## Quick Links
+- **[AGENT_ONBOARDING.md](./AGENT_ONBOARDING.md)** — **Start here for agents**: read order, triage, links to dated **debug logs** under `DOCS/debugs/`
 - [FIREBASE_GUIDE.md](./FIREBASE_GUIDE.md) - **Firebase feed**: UID for rules, Auth domains, config checklist
 - [MUSIC_GUIDE.md](./MUSIC_GUIDE.md) - **Add / update tracks** (`assets/music/` + `scan-music.mjs --apply`)
 - [CHANGELOG.md](./CHANGELOG.md) - Version history and features
@@ -22,7 +23,8 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - [My_Thoughts.md](./My_Thoughts.md) - Internal developer reflections
 
 ## Current Status
-- **Version**: **v1.2.4** (2026-03-23) — **FIREBASE_GUIDE.md** + SCRATCHPAD updates; Firebase Auth flow verified on deployed site; finish owner UID in `firestore.rules` per guide.
+- **Version**: **v1.2.5** (2026-03-23) — **AGENT_ONBOARDING.md** + **debugs/debug_2026-03-23_firebase-feed-feed-visibility.md** (Firebase incident timeline); triage table for future agents.
+- [AMENDED 2026-03-23]: **v1.2.4** — FIREBASE_GUIDE, feed post visibility fix (`scroll-reveal`), SCRATCHPAD Firebase checklist.
 - [AMENDED 2026-03-23]: **v1.2.3** — optional Firebase Firestore live feed + composer (`js/firebase-feed.js`, `firestore.rules`).
 - [AMENDED 2026-03-23]: **v1.2.2** (2026-03-20) — brighter default theme + mobile safe-area / light mobile polish
 - **Health**: ✅ Stable
