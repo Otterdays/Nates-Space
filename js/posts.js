@@ -22,7 +22,8 @@
 
         NatesData.posts.forEach(function (post) {
             const article = document.createElement('article');
-            article.className = 'glass-panel post scroll-reveal';
+            // NOTE: no scroll-reveal — IO often never adds .visible for re-rendered feed cards (opacity stays 0).
+            article.className = 'glass-panel post';
 
             const header = document.createElement('header');
             header.className = 'post-header';
@@ -118,11 +119,5 @@
                 initVideoPost(article);
             }
         });
-
-        if (window.revealObserver) {
-            contentArea.querySelectorAll('article.post').forEach(function (el) {
-                window.revealObserver.observe(el);
-            });
-        }
     };
 })();

@@ -100,7 +100,7 @@ NatesSpace/
 | `app-init.js` | Boot: playlist → posts → delegated `.action-btn` pulse + Save/Share |
 | `firebase-config.js` | `window.__FIREBASE_CONFIG__` (from Firebase Console web app); `null` disables feed |
 | `firebase-feed.js` | Firestore `posts` + Auth + composer **Share**; merges into `NatesData.posts` before `renderPosts()` |
-- **Scroll reveal**: `IntersectionObserver` adds `.visible` to `.scroll-reveal` elements (posts, gallery, friends); new posts get `.scroll-reveal` when rendered.
+- **Scroll reveal**: `IntersectionObserver` adds `.visible` to `.scroll-reveal` elements (**gallery, friends** at boot); feed **`article.post`** cards omit `scroll-reveal` so Firestore re-renders stay visible (see CHANGELOG v1.2.4).
 
 ### Runtime diagram (high level)
 

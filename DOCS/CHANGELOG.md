@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 ## [1.2.4] - 2026-03-23
 
+### Fixed
+- **Feed posts invisible after Firestore merge**: `article.post` used `scroll-reveal` (opacity 0 until `.visible`); IntersectionObserver often did not flip visibility for re-rendered cards — removed reveal from feed posts only (`js/posts.js`). Cache `v=125`.
+
 ### Added
 - **DOCS/FIREBASE_GUIDE.md** — User UID for `firestore.rules`, authorized domains, config parity, API key notes; linked from SUMMARY and ARCHITECTURE.
 
