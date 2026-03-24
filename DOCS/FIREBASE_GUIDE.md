@@ -22,7 +22,8 @@ Your **User UID** is Firebase’s stable ID for *one* signed-in account. It is *
 3. Refresh **Users**; open your row.
 4. Copy **User UID** (long alphanumeric string).
 
-Put that value in **`firestore.rules`** in **both** places that say `REPLACE_WITH_OWNER_FIREBASE_AUTH_UID` (single-quoted in the rules file).
+Put that value in **`firestore.rules`** in **both** places that say `REPLACE_WITH_OWNER_FIREBASE_AUTH_UID` (single-quoted in the rules file).  
+[AMENDED 2026-03-23]: This repo’s checked-in rules already embed the owner UID for the live project; still **Publish** after any edit so production matches git.
 
 5. **Firestore** → **Rules** → paste the updated rules (or deploy via CLI) → **Publish**.
 
@@ -42,6 +43,14 @@ Browser key restrictions: ensure **Identity Toolkit API** is allowed if you use 
 ## Composer visibility
 
 When Firebase config is valid, the post composer is **hidden** until you are signed in; after sign-in it appears.
+
+## Likes & comments (live posts)
+
+- **UI:** Firestore-backed cards (`data-firebase-post-id` on `article.post`) get ♡/♥ like, 💬 toggles a **comments panel** (list + input). Static seed posts from `assets/data.js` show dimmed actions (display-only counts).
+- **Likes:** Client runs `FieldValue.increment(1)` on `stats.likes`. **Session dedupe:** `sessionStorage` key `natespace_liked_posts_v1` (one like per post ID per browser tab session).
+- **Comments:** Subcollection `posts/{postId}/comments` with `text`, `authorName`, `createdAt` (server timestamp). Adding a comment uses a **batch**: new comment doc + `stats.comments` increment.
+- **Rules:** See [`firestore.rules`](../firestore.rules) — owner retains create/delete on posts and full `update`; **any signed-out or signed-in client** may `update` a post **only** when `diff` affects `stats` alone and either likes or comments goes up by **exactly 1** (anti-bulk in one write). Comments: public **read** + **create** with field validation.
+- **Indexes:** If the browser console shows a Firestore link to create an index for `comments` + `createdAt`, click it once and deploy the index.
 
 ## Related
 

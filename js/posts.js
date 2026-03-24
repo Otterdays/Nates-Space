@@ -1,5 +1,17 @@
 // [TRACE: DOCS/ARCHITECTURE.md] Data-driven feed; DOM APIs only (no HTML injection from strings).
 (function () {
+    var LIKED_STORAGE_KEY = 'natespace_liked_posts_v1';
+
+    function sessionLikedIds() {
+        try {
+            var raw = sessionStorage.getItem(LIKED_STORAGE_KEY);
+            var a = raw ? JSON.parse(raw) : [];
+            return Array.isArray(a) ? a : [];
+        } catch (e) {
+            return [];
+        }
+    }
+
     function initVideoPost(article) {
         const video = article.querySelector('video');
         if (!video) return;
@@ -91,18 +103,41 @@
             footer.className = 'post-footer';
 
             const likeBtn = document.createElement('button');
+            likeBtn.type = 'button';
             likeBtn.className = 'action-btn';
-            likeBtn.textContent = '❤️ ' + post.stats.likes;
+            var liveId = post._firebaseDocId;
+            if (liveId) {
+                article.setAttribute('data-firebase-post-id', liveId);
+                var liked = sessionLikedIds().indexOf(liveId) !== -1;
+                likeBtn.className = 'action-btn post-like-btn' + (liked ? ' is-liked' : '');
+                likeBtn.textContent = (liked ? '♥ ' : '♡ ') + (Number(post.stats.likes) || 0);
+                likeBtn.setAttribute('aria-pressed', liked ? 'true' : 'false');
+            } else {
+                likeBtn.textContent = '♡ ' + (post.stats.likes | 0);
+                likeBtn.classList.add('post-action-static');
+                likeBtn.title = 'Likes on live posts only';
+            }
 
             const comBtn = document.createElement('button');
+            comBtn.type = 'button';
             comBtn.className = 'action-btn';
-            comBtn.textContent = '💬 ' + post.stats.comments;
+            if (liveId) {
+                comBtn.classList.add('post-comment-toggle');
+                comBtn.textContent = '💬 ' + (Number(post.stats.comments) || 0);
+                comBtn.setAttribute('aria-expanded', 'false');
+            } else {
+                comBtn.textContent = '💬 ' + (Number(post.stats.comments) || 0);
+                comBtn.classList.add('post-action-static');
+                comBtn.title = 'Comments on live posts only';
+            }
 
             const saveBtn = document.createElement('button');
+            saveBtn.type = 'button';
             saveBtn.className = 'action-btn';
             saveBtn.textContent = '🔖 Save';
 
             const shareBtn = document.createElement('button');
+            shareBtn.type = 'button';
             shareBtn.className = 'action-btn';
             shareBtn.textContent = '↗️ Share';
 
@@ -114,6 +149,33 @@
             article.appendChild(header);
             article.appendChild(body);
             article.appendChild(footer);
+
+            if (liveId) {
+                const panel = document.createElement('div');
+                panel.className = 'post-comments-panel';
+                panel.setAttribute('hidden', '');
+                const list = document.createElement('ul');
+                list.className = 'post-comments-list';
+                const form = document.createElement('form');
+                form.className = 'post-comment-form';
+                const inp = document.createElement('input');
+                inp.type = 'text';
+                inp.className = 'post-comment-input';
+                inp.name = 'commentText';
+                inp.maxLength = 500;
+                inp.setAttribute('autocomplete', 'off');
+                inp.placeholder = 'Add a comment…';
+                const send = document.createElement('button');
+                send.type = 'submit';
+                send.className = 'btn post-comment-send';
+                send.textContent = 'Send';
+                form.appendChild(inp);
+                form.appendChild(send);
+                panel.appendChild(list);
+                panel.appendChild(form);
+                article.appendChild(panel);
+            }
+
             contentArea.appendChild(article);
 
             if (post.media && post.media.type === 'video') {

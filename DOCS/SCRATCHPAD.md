@@ -2,6 +2,13 @@
 
 # Nate's Space - Scratchpad
 
+## Session: 2026-03-23 (likes + comments)
+
+### Last actions
+- [x] Firestore **likes** (`increment`) + **comments** subcollection + batch; `firestore.rules` owner vs public stats rules; UI panel + CSS; **CHANGELOG v1.2.7**, `FIREBASE_GUIDE`, cache **v=127**. **Publish rules** in Console after pull.
+
+---
+
 ## Session: 2026-03-23 (Issue G — `window.NatesData`)
 
 ### Root cause

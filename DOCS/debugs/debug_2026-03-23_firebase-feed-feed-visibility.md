@@ -95,6 +95,14 @@ This document records **what happened, in order**, so agents don’t re-diagnose
 
 ---
 
+## Issue H — Likes / comments (2026-03-23)
+
+- **Added:** Client `increment` on `posts.stats.likes` / `stats.comments`; subcollection `posts/{id}/comments`; sessionStorage `natespace_liked_posts_v1` for one-like-per-tab; UI panel under live cards only (`_firebaseDocId`).
+- **Rules:** Owner OR `stats`-only diff with +1 like XOR +1 comment per update; `comments` public read/create with field caps.
+- **Operator:** Republish `firestore.rules` after deploy; create composite index if Console prompts for `comments` query.
+
+---
+
 ## If you add a new incident
 
-**Append** a new section below with a heading `## Issue G — …` or create a new `debug_YYYY-MM-DD_….md` and link it from [AGENT_ONBOARDING.md](../AGENT_ONBOARDING.md).
+**Append** a new section below with a heading `## Issue …` or create a new `debug_YYYY-MM-DD_….md` and link it from [AGENT_ONBOARDING.md](../AGENT_ONBOARDING.md).

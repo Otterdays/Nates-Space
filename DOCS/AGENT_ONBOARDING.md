@@ -56,6 +56,7 @@ Then branch by task:
 | `auth/unauthorized-domain` | Host not allowlisted | Authentication → Settings → **Authorized domains** |
 | Posted toast but **no posts on page**; data exists in Firestore | **Missing `window.NatesData`:** `renderPosts()` bails on `!window.NatesData` (fixed v1.2.6). **Or CSS:** `scroll-reveal` without `.visible` (fixed v1.2.4+). **Or** Firestore snapshot error (console). | [debugs/debug_2026-03-23_firebase-feed-feed-visibility.md](./debugs/debug_2026-03-23_firebase-feed-feed-visibility.md) **Issue G / E** |
 | `permission-denied` on write | `firestore.rules` UID placeholder or wrong user | [FIREBASE_GUIDE.md](./FIREBASE_GUIDE.md) — User UID |
+| `permission-denied` on **like** / **comment** | Rules not published or old rules (need stats-only `update` + `comments` create) | Paste repo [`firestore.rules`](../firestore.rules) → **Publish** |
 | Composer always visible when logged out | Old deploy before composer gating | [`js/firebase-feed.js`](../js/firebase-feed.js) + `postComposer` `hidden` |
 | Music list wrong / missing tracks | `music-files.js` out of sync with `assets/music/` | [MUSIC_GUIDE.md](./MUSIC_GUIDE.md) — `scan-music.mjs --apply` |
 

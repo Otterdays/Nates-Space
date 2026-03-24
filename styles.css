@@ -1471,6 +1471,115 @@ html {
   background: rgba(0, 212, 170, 0.1);
 }
 
+.post-like-btn.is-liked {
+  color: #ff6b8a;
+  background: rgba(255, 107, 138, 0.12);
+}
+
+.post-like-btn.is-liked:hover {
+  color: #ff8fa3;
+}
+
+.post-action-static {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.post-action-static:hover {
+  color: var(--text-secondary);
+  background: transparent;
+}
+
+.post-comments-panel {
+  margin-top: 0.75rem;
+  padding: 0.85rem 1rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.post-comments-list {
+  list-style: none;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.post-comments-empty {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  padding: 0.25rem 0;
+}
+
+.post-comment-item {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.post-comment-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.post-comment-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.2rem;
+  flex-wrap: wrap;
+}
+
+.post-comment-author {
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.post-comment-time {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.post-comment-text {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.post-comment-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.post-comment-input {
+  flex: 1 1 140px;
+  min-width: 0;
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+}
+
+.post-comment-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.post-comment-send {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 900px) {
 

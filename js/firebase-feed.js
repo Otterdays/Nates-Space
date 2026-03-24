@@ -32,6 +32,7 @@
         var createdAt = d.createdAt;
         var date = createdAt && createdAt.toDate ? createdAt.toDate() : null;
         return {
+            _firebaseDocId: doc.id,
             type: d.type || 'update',
             title: typeof d.title === 'string' ? d.title : 'Update',
             timestamp: formatRelative(date),
@@ -46,8 +47,20 @@
         };
     }
 
+    var commentUnsubs = {};
+
+    function tearDownCommentListeners() {
+        Object.keys(commentUnsubs).forEach(function (k) {
+            if (typeof commentUnsubs[k] === 'function') {
+                commentUnsubs[k]();
+            }
+            delete commentUnsubs[k];
+        });
+    }
+
     function mergeAndRender(fsPosts) {
         if (!window.NatesData) return;
+        tearDownCommentListeners();
         window.NatesData.posts = fsPosts.concat(staticFeedPosts);
         if (typeof window.renderPosts === 'function') {
             window.renderPosts();
@@ -68,6 +81,37 @@
 
     var auth = firebase.auth();
     var db = firebase.firestore();
+    var LIKED_KEY = 'natespace_liked_posts_v1';
+    var MAX_COMMENT = 500;
+
+    function getLikedIds() {
+        try {
+            var raw = sessionStorage.getItem(LIKED_KEY);
+            var a = raw ? JSON.parse(raw) : [];
+            return Array.isArray(a) ? a : [];
+        } catch (e) {
+            return [];
+        }
+    }
+
+    function markLiked(postId) {
+        var a = getLikedIds();
+        if (a.indexOf(postId) === -1) {
+            a.push(postId);
+            try {
+                sessionStorage.setItem(LIKED_KEY, JSON.stringify(a));
+            } catch (err) {
+                if (typeof console !== 'undefined' && console.warn) {
+                    console.warn('sessionStorage liked', err);
+                }
+            }
+        }
+    }
+
+    function isLiked(postId) {
+        return getLikedIds().indexOf(postId) !== -1;
+    }
+
     var authBtn = document.getElementById('firebaseAuthBtn');
     var shareBtn = document.getElementById('composerShareBtn');
     var composerBody = document.getElementById('composerBody');
@@ -143,6 +187,178 @@
                 mergeAndRender([]);
             }
         );
+
+    var contentAreaEl = document.querySelector('.content-area');
+    if (contentAreaEl) {
+        contentAreaEl.addEventListener('click', function (e) {
+            var likeBtn = e.target.closest('.post-like-btn');
+            if (likeBtn) {
+                e.preventDefault();
+                var article = likeBtn.closest('article.post');
+                if (!article) return;
+                var postId = article.getAttribute('data-firebase-post-id');
+                if (!postId) return;
+                if (isLiked(postId)) {
+                    if (typeof window.showToast === 'function') {
+                        window.showToast('You already liked this', '♥');
+                    }
+                    return;
+                }
+                likeBtn.disabled = true;
+                db.collection('posts').doc(postId).update({
+                    'stats.likes': firebase.firestore.FieldValue.increment(1)
+                }).then(function () {
+                    markLiked(postId);
+                    if (typeof window.showToast === 'function') {
+                        window.showToast('Thanks!', '♥');
+                    }
+                }).catch(function (err) {
+                    if (typeof console !== 'undefined' && console.error) {
+                        console.error('like', err);
+                    }
+                    if (typeof window.showToast === 'function') {
+                        window.showToast('Could not like', '⚠️');
+                    }
+                }).then(function () {
+                    likeBtn.disabled = false;
+                });
+                return;
+            }
+
+            var comToggle = e.target.closest('.post-comment-toggle');
+            if (comToggle) {
+                e.preventDefault();
+                var art = comToggle.closest('article.post');
+                if (!art) return;
+                var pid = art.getAttribute('data-firebase-post-id');
+                if (!pid) return;
+                var panel = art.querySelector('.post-comments-panel');
+                if (!panel) return;
+                var list = panel.querySelector('.post-comments-list');
+                var open = panel.hasAttribute('hidden') || panel.hidden;
+                if (open) {
+                    panel.removeAttribute('hidden');
+                    panel.hidden = false;
+                    comToggle.setAttribute('aria-expanded', 'true');
+                    if (!commentUnsubs[pid] && list) {
+                        var q = db.collection('posts').doc(pid).collection('comments')
+                            .orderBy('createdAt', 'desc')
+                            .limit(40);
+                        commentUnsubs[pid] = q.onSnapshot(
+                            function (snap) {
+                                while (list.firstChild) {
+                                    list.removeChild(list.firstChild);
+                                }
+                                if (snap.empty) {
+                                    var emptyLi = document.createElement('li');
+                                    emptyLi.className = 'post-comments-empty';
+                                    emptyLi.textContent = 'No comments yet — say something nice.';
+                                    list.appendChild(emptyLi);
+                                    return;
+                                }
+                                snap.forEach(function (cdoc) {
+                                    var c = cdoc.data();
+                                    var li = document.createElement('li');
+                                    li.className = 'post-comment-item';
+                                    var meta = document.createElement('div');
+                                    meta.className = 'post-comment-meta';
+                                    var who = document.createElement('span');
+                                    who.className = 'post-comment-author';
+                                    who.textContent = typeof c.authorName === 'string' ? c.authorName : 'Guest';
+                                    var when = document.createElement('span');
+                                    when.className = 'post-comment-time';
+                                    var ts = c.createdAt && c.createdAt.toDate ? c.createdAt.toDate() : null;
+                                    when.textContent = formatRelative(ts);
+                                    meta.appendChild(who);
+                                    meta.appendChild(when);
+                                    var body = document.createElement('p');
+                                    body.className = 'post-comment-text';
+                                    body.textContent = typeof c.text === 'string' ? c.text : '';
+                                    li.appendChild(meta);
+                                    li.appendChild(body);
+                                    list.appendChild(li);
+                                });
+                            },
+                            function (err) {
+                                if (typeof console !== 'undefined' && console.error) {
+                                    console.error('comments', err);
+                                }
+                                if (typeof window.showToast === 'function') {
+                                    window.showToast('Could not load comments', '⚠️');
+                                }
+                            }
+                        );
+                    }
+                } else {
+                    panel.setAttribute('hidden', '');
+                    panel.hidden = true;
+                    comToggle.setAttribute('aria-expanded', 'false');
+                    if (commentUnsubs[pid]) {
+                        commentUnsubs[pid]();
+                        delete commentUnsubs[pid];
+                    }
+                }
+                return;
+            }
+        });
+
+        contentAreaEl.addEventListener('submit', function (e) {
+            var form = e.target.closest('.post-comment-form');
+            if (!form) return;
+            e.preventDefault();
+            var article = form.closest('article.post');
+            if (!article) return;
+            var postId = article.getAttribute('data-firebase-post-id');
+            if (!postId) return;
+            var input = form.querySelector('.post-comment-input');
+            if (!input) return;
+            var text = (input.value || '').trim();
+            if (!text) {
+                if (typeof window.showToast === 'function') {
+                    window.showToast('Write a comment first', '💬');
+                }
+                return;
+            }
+            if (text.length > MAX_COMMENT) {
+                if (typeof window.showToast === 'function') {
+                    window.showToast('Comment too long', '⚠️');
+                }
+                return;
+            }
+            var submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn) submitBtn.disabled = true;
+            var postRef = db.collection('posts').doc(postId);
+            var commentRef = postRef.collection('comments').doc();
+            var authorName = 'Guest';
+            if (auth.currentUser) {
+                authorName = auth.currentUser.displayName || auth.currentUser.email || 'Fan';
+            }
+            var batch = db.batch();
+            batch.set(commentRef, {
+                text: text,
+                authorName: authorName,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            batch.update(postRef, {
+                'stats.comments': firebase.firestore.FieldValue.increment(1)
+            });
+            batch.commit().then(function () {
+                input.value = '';
+                if (typeof window.showToast === 'function') {
+                    window.showToast('Comment added', '✨');
+                }
+            }).catch(function (err) {
+                if (typeof console !== 'undefined' && console.error) {
+                    console.error('comment', err);
+                }
+                if (typeof window.showToast === 'function') {
+                    window.showToast('Could not comment', '⚠️');
+                }
+            }).then(function () {
+                if (submitBtn) submitBtn.disabled = false;
+            });
+        });
+    }
 
     function titleFromContent(text) {
         var lines = text.split(/\r?\n/);

@@ -4,6 +4,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.7] - 2026-03-23
+
+### Added
+- **Live likes & comments** on Firestore posts: `FieldValue.increment` on `stats`, `posts/{id}/comments` subcollection, comments panel UI + styles; sessionStorage like dedupe (`js/firebase-feed.js`, `js/posts.js`, `styles.css`).
+
+### Changed
+- **`firestore.rules`**: owner full post `update`/`delete`; public **stats-only** updates (+1 like **or** +1 comment per write); `comments` subcollection rules.
+- **Docs**: `FIREBASE_GUIDE.md` (likes/comments); cache `v=127`.
+
 ## [1.2.6] - 2026-03-23
 
 ### Fixed

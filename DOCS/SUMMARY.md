@@ -23,7 +23,8 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - [My_Thoughts.md](./My_Thoughts.md) - Internal developer reflections
 
 ## Current Status
-- **Version**: **v1.2.6** (2026-03-23) — **`window.NatesData`** export in `assets/data.js` so `renderPosts()` runs (Issue G); cache `v=126`.
+- **Version**: **v1.2.7** (2026-03-23) — Firestore **likes** + **comments** (subcollection, rules, UI); cache `v=127`.
+- [AMENDED 2026-03-23]: **v1.2.6** — `window.NatesData` export (Issue G); cache `v=126`.
 - [AMENDED 2026-03-23]: **v1.2.5** — AGENT_ONBOARDING + debug log index.
 - [AMENDED 2026-03-23]: **v1.2.4** — FIREBASE_GUIDE, `scroll-reveal` feed fix (Issue E), SCRATCHPAD Firebase checklist.
 - [AMENDED 2026-03-23]: **v1.2.3** — optional Firebase Firestore live feed + composer (`js/firebase-feed.js`, `firestore.rules`).

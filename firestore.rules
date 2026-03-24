@@ -20,8 +20,39 @@ service cloud.firestore {
         && request.resource.data.createdAt is timestamp
         && request.resource.data.keys().hasOnly(['type', 'title', 'content', 'stats', 'createdAt']);
 
-      allow update, delete: if request.auth != null
+      // Owner: full edit/delete. Anyone: bump stats by at most +1 like OR +1 comment per write.
+      allow delete: if request.auth != null
         && request.auth.uid == '7gTTl2LM8mS2jrByUabHlaRgC4J2';
+
+      allow update: if (request.auth != null
+          && request.auth.uid == '7gTTl2LM8mS2jrByUabHlaRgC4J2')
+        || (
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['stats'])
+          && request.resource.data.stats.likes is int
+          && request.resource.data.stats.comments is int
+          && (
+            (
+              request.resource.data.stats.likes == resource.data.stats.likes + 1
+              && request.resource.data.stats.comments == resource.data.stats.comments
+            )
+            || (
+              request.resource.data.stats.likes == resource.data.stats.likes
+              && request.resource.data.stats.comments == resource.data.stats.comments + 1
+            )
+          )
+        );
+
+      match /comments/{commentId} {
+        allow read: if true;
+        allow create: if request.resource.data.keys().hasAll(['text', 'authorName', 'createdAt'])
+          && request.resource.data.text is string
+          && request.resource.data.text.size() > 0
+          && request.resource.data.text.size() <= 500
+          && request.resource.data.authorName is string
+          && request.resource.data.authorName.size() <= 120
+          && request.resource.data.createdAt is timestamp;
+        allow update, delete: if false;
+      }
     }
   }
 }
