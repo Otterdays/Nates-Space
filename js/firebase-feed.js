@@ -58,6 +58,8 @@
         });
     }
 
+    window.__natespaceTearDownCommentListeners = tearDownCommentListeners;
+
     function mergeAndRender(fsPosts) {
         if (!window.NatesData) return;
         tearDownCommentListeners();

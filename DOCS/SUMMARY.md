@@ -15,6 +15,7 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - **[AGENT_ONBOARDING.md](./AGENT_ONBOARDING.md)** — **Start here for agents**: read order, triage, links to dated **debug logs** under `DOCS/debugs/`
 - [FIREBASE_GUIDE.md](./FIREBASE_GUIDE.md) - **Firebase feed**: UID for rules, Auth domains, config checklist
 - [MUSIC_GUIDE.md](./MUSIC_GUIDE.md) - **Add / update tracks** (`assets/music/` + `scan-music.mjs --apply`)
+- **Live page:** [`platforms.html`](../platforms.html) — indie/music platform directory (also in site nav)
 - [CHANGELOG.md](./CHANGELOG.md) - Version history and features
 - [ARCHITECTURE.md](./ARCHITECTURE.md) - Technical structure and design system
 - [SBOM.md](./SBOM.md) - Assets and security verification
@@ -23,7 +24,9 @@ A personal portfolio/social-style website for Nate, featuring studio content, mu
 - [My_Thoughts.md](./My_Thoughts.md) - Internal developer reflections
 
 ## Current Status
-- **Version**: **v1.2.7** (2026-03-23) — Firestore **likes** + **comments** (subcollection, rules, UI); cache `v=127`.
+- **Version**: **v1.2.9** (2026-03-23) — **`platforms.html`** (indie/music platform directory) + Vercel site link; cache `v=129`.
+- [AMENDED 2026-03-23]: **v1.2.8** — feed pagination; cache `v=128`.
+- [AMENDED 2026-03-23]: **v1.2.7** — likes + comments; cache `v=127`.
 - [AMENDED 2026-03-23]: **v1.2.6** — `window.NatesData` export (Issue G); cache `v=126`.
 - [AMENDED 2026-03-23]: **v1.2.5** — AGENT_ONBOARDING + debug log index.
 - [AMENDED 2026-03-23]: **v1.2.4** — FIREBASE_GUIDE, `scroll-reveal` feed fix (Issue E), SCRATCHPAD Firebase checklist.

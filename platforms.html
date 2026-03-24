@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Music platforms — Nate's Space</title>
+    <meta name="description"
+        content="Indie-friendly sites for streaming, distribution, discovery, and posting your music.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=129">
+</head>
+
+<body class="music-page-body">
+    <canvas id="particleCanvas"></canvas>
+    <div class="music-page-shell">
+        <nav class="top-nav glass-panel music-top-nav">
+            <div class="nav-left-group">
+                <a href="index.html" class="logo music-logo-link" title="Back to feed">NATE'S SPACE</a>
+                <div class="nav-page-links">
+                    <a href="index.html" class="nav-text-link">Feed</a>
+                    <a href="music.html" class="nav-text-link">Music</a>
+                    <span class="nav-text-link nav-text-current" aria-current="page">Platforms</span>
+                </div>
+                <div class="nav-socials">
+                    <a href="https://music.apple.com/us/artist/natee/1810779697" target="_blank" rel="noopener noreferrer"
+                        class="nav-btn social-link apple" title="Apple Music">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.5-9h-2v3.59c0 1.28-1.04 2.32-2.32 2.32-1.28 0-2.32-1.04-2.32-2.32 0-1.28 1.04-2.32 2.32-2.32.17 0 .34.02.5.06V8h3.82v1z" />
+                        </svg>
+                    </a>
+                    <a href="https://open.spotify.com/artist/3quza30cJ2cYJm2auOIv85" target="_blank"
+                        rel="noopener noreferrer" class="nav-btn social-link spotify" title="Spotify">
+                        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-controls">
+                <button type="button" class="nav-btn" id="themeToggle" title="Switch Theme">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <main class="music-main">
+            <header class="glass-panel music-library-header">
+                <h1 class="music-library-title">Music &amp; indie platforms</h1>
+                <p class="platforms-intro">
+                    Curated links for posting tracks, reaching fans, and managing releases. Tap a row to open the site.
+                    This is a reference list — not an endorsement; check each platform’s terms and fees.
+                </p>
+            </header>
+
+            <div class="glass-panel music-library-panel">
+                <section class="platforms-section" aria-labelledby="plat-host">
+                    <h2 id="plat-host" class="platforms-section-title">Host &amp; sell (indie-first)</h2>
+                    <ul class="platforms-list">
+                        <li>
+                            <a class="platforms-card" href="https://bandcamp.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Bandcamp</p>
+                                <p class="platforms-card-desc">Direct-to-fan sales, merch, mailing list; strong indie culture.</p>
+                                <span class="platforms-card-host">bandcamp.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://soundcloud.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">SoundCloud</p>
+                                <p class="platforms-card-desc">Uploads, embeds, comments; common for demos and electronic scenes.</p>
+                                <span class="platforms-card-host">soundcloud.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://audiomack.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Audiomack</p>
+                                <p class="platforms-card-desc">Free streaming uploads; hip-hop and emerging artists.</p>
+                                <span class="platforms-card-host">audiomack.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://audius.co/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Audius</p>
+                                <p class="platforms-card-desc">Decentralized-style streaming community for independent uploads.</p>
+                                <span class="platforms-card-host">audius.co</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://www.bandlab.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">BandLab</p>
+                                <p class="platforms-card-desc">Free DAW in the browser plus social publishing.</p>
+                                <span class="platforms-card-host">bandlab.com</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="platforms-section" aria-labelledby="plat-distro">
+                    <h2 id="plat-distro" class="platforms-section-title">DIY distribution (DSPs)</h2>
+                    <ul class="platforms-list">
+                        <li>
+                            <a class="platforms-card" href="https://distrokid.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">DistroKid</p>
+                                <p class="platforms-card-desc">Flat annual fee; fast uploads to major streaming services.</p>
+                                <span class="platforms-card-host">distrokid.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://www.tunecore.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">TuneCore</p>
+                                <p class="platforms-card-desc">Pay-per-release or subscription; broad store coverage.</p>
+                                <span class="platforms-card-host">tunecore.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://cdbaby.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">CD Baby</p>
+                                <p class="platforms-card-desc">One-time fee per release; distribution + optional publishing.</p>
+                                <span class="platforms-card-host">cdbaby.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://amuse.io/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Amuse</p>
+                                <p class="platforms-card-desc">Free tier available; mobile-first release flow.</p>
+                                <span class="platforms-card-host">amuse.io</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://unitedmasters.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">UnitedMasters</p>
+                                <p class="platforms-card-desc">Distribution with brand sync opportunities.</p>
+                                <span class="platforms-card-host">unitedmasters.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://routenote.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">RouteNote</p>
+                                <p class="platforms-card-desc">Free and premium tiers; wide DSP reach.</p>
+                                <span class="platforms-card-host">routenote.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://dittomusic.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Ditto Music</p>
+                                <p class="platforms-card-desc">Independent distributor with recurring plans.</p>
+                                <span class="platforms-card-host">dittomusic.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://www.landr.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">LANDR</p>
+                                <p class="platforms-card-desc">Mastering tools plus distribution in one ecosystem.</p>
+                                <span class="platforms-card-host">landr.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://soundon.global/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">SoundOn</p>
+                                <p class="platforms-card-desc">TikTok-affiliated distribution and promo tools.</p>
+                                <span class="platforms-card-host">soundon.global</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="platforms-section" aria-labelledby="plat-artist">
+                    <h2 id="plat-artist" class="platforms-section-title">Artist dashboards (DSPs)</h2>
+                    <ul class="platforms-list">
+                        <li>
+                            <a class="platforms-card" href="https://artists.spotify.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Spotify for Artists</p>
+                                <p class="platforms-card-desc">Pitch releases, see stats, manage profile after your music is live.</p>
+                                <span class="platforms-card-host">artists.spotify.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://artists.apple.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Apple Music for Artists</p>
+                                <p class="platforms-card-desc">Apple Music / iTunes insights and profile tools.</p>
+                                <span class="platforms-card-host">artists.apple.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://www.youtube.com/artists/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">YouTube for Artists</p>
+                                <p class="platforms-card-desc">Official artist channel and video music ecosystem.</p>
+                                <span class="platforms-card-host">youtube.com/artists</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://artists.amazon.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Amazon Music for Artists</p>
+                                <p class="platforms-card-desc">Streaming and Alexa reach for Amazon Music.</p>
+                                <span class="platforms-card-host">artists.amazon.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://backstage.deezer.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Deezer Backstage for Artists</p>
+                                <p class="platforms-card-desc">Analytics and profile for Deezer.</p>
+                                <span class="platforms-card-host">backstage.deezer.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://amp.pandora.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Pandora AMP</p>
+                                <p class="platforms-card-desc">Artist marketing tools on Pandora (where available).</p>
+                                <span class="platforms-card-host">amp.pandora.com</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="platforms-section" aria-labelledby="plat-social">
+                    <h2 id="plat-social" class="platforms-section-title">Social &amp; video</h2>
+                    <ul class="platforms-list">
+                        <li>
+                            <a class="platforms-card" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">TikTok</p>
+                                <p class="platforms-card-desc">Short video; huge music discovery via sounds and trends.</p>
+                                <span class="platforms-card-host">tiktok.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Instagram</p>
+                                <p class="platforms-card-desc">Reels, Stories, link in bio for drops and tour dates.</p>
+                                <span class="platforms-card-host">instagram.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">YouTube</p>
+                                <p class="platforms-card-desc">Official videos, Shorts, livestreams, long-form content.</p>
+                                <span class="platforms-card-host">youtube.com</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="platforms-section" aria-labelledby="plat-discovery">
+                    <h2 id="plat-discovery" class="platforms-section-title">Discovery &amp; promo</h2>
+                    <ul class="platforms-list">
+                        <li>
+                            <a class="platforms-card" href="https://www.submithub.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">SubmitHub</p>
+                                <p class="platforms-card-desc">Submit tracks to bloggers, playlisters, and labels (credits-based).</p>
+                                <span class="platforms-card-host">submithub.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://groover.co/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Groover</p>
+                                <p class="platforms-card-desc">Guaranteed feedback from curators and media (paid).</p>
+                                <span class="platforms-card-host">groover.co</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://hypem.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Hype Machine</p>
+                                <p class="platforms-card-desc">Aggregates music blogs; discovery for indie tracks.</p>
+                                <span class="platforms-card-host">hypem.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://www.reverbnation.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">ReverbNation</p>
+                                <p class="platforms-card-desc">Artist tools, opportunities, and promotion (long-running indie hub).</p>
+                                <span class="platforms-card-host">reverbnation.com</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="platforms-section" aria-labelledby="plat-beats">
+                    <h2 id="plat-beats" class="platforms-section-title">Beats &amp; licensing</h2>
+                    <ul class="platforms-list">
+                        <li>
+                            <a class="platforms-card" href="https://www.beatstars.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">BeatStars</p>
+                                <p class="platforms-card-desc">Sell beats and licenses to vocalists and brands.</p>
+                                <span class="platforms-card-host">beatstars.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://traktrain.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Traktrain</p>
+                                <p class="platforms-card-desc">Invite-based beat marketplace; common in producer circles.</p>
+                                <span class="platforms-card-host">traktrain.com</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="platforms-section" aria-labelledby="plat-tools">
+                    <h2 id="plat-tools" class="platforms-section-title">Tools &amp; community</h2>
+                    <ul class="platforms-list">
+                        <li>
+                            <a class="platforms-card" href="https://splice.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Splice</p>
+                                <p class="platforms-card-desc">Samples, rent-to-own plugins, project backup.</p>
+                                <span class="platforms-card-host">splice.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://genius.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Genius</p>
+                                <p class="platforms-card-desc">Lyrics, annotations, artist verification.</p>
+                                <span class="platforms-card-host">genius.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://www.reddit.com/r/WeAreTheMusicMakers/" target="_blank"
+                                rel="noopener noreferrer">
+                                <p class="platforms-card-name">r/WeAreTheMusicMakers</p>
+                                <p class="platforms-card-desc">Large Reddit community for production and career questions.</p>
+                                <span class="platforms-card-host">reddit.com/r/WeAreTheMusicMakers</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://www.patreon.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Patreon</p>
+                                <p class="platforms-card-desc">Membership tiers for fans — stems, early drops, live Q&amp;As.</p>
+                                <span class="platforms-card-host">patreon.com</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="platforms-card" href="https://ko-fi.com/" target="_blank" rel="noopener noreferrer">
+                                <p class="platforms-card-name">Ko-fi</p>
+                                <p class="platforms-card-desc">Tips and simple memberships without heavy setup.</p>
+                                <span class="platforms-card-host">ko-fi.com</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/theme-layout.js?v=129"></script>
+    <script src="js/particles.js?v=129"></script>
+</body>
+
+</html>

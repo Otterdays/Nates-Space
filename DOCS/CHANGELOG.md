@@ -4,6 +4,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.9] - 2026-03-23
+
+### Added
+- **`platforms.html`** — mobile-friendly curated list of indie/music platforms (hosting, distribution, DSP dashboards, social, promo, beats, tools); nav link **Platforms** on Feed + Music pages.
+
+### Changed
+- Profile **website** link: `https://natee.vercel.app` (was dead `natesspace.com` `#`); **All platforms** button → `platforms.html`. Cache `v=129`.
+
+## [1.2.8] - 2026-03-23
+
+### Added
+- **Feed pagination (infinite scroll)**: first **5** posts, then **+5** when the window scroll reaches the bottom (`js/posts.js`); `window.__feedVisibleCount`. Firestore still receives the full `posts` snapshot; only DOM rendering is paged.
+
+### Changed
+- **`js/firebase-feed.js`**: `window.__natespaceTearDownCommentListeners` so paginated re-renders detach comment `onSnapshot`s. Cache `v=128`.
+
 ## [1.2.7] - 2026-03-23
 
 ### Added

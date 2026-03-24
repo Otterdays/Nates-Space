@@ -1,5 +1,7 @@
 // [TRACE: DOCS/ARCHITECTURE.md] Data-driven feed; DOM APIs only (no HTML injection from strings).
 (function () {
+    var FEED_PAGE_SIZE = 5;
+    var SCROLL_BOTTOM_PX = 280;
     var LIKED_STORAGE_KEY = 'natespace_liked_posts_v1';
 
     function sessionLikedIds() {
@@ -24,16 +26,50 @@
         });
     }
 
+    function resolveFeedVisibleCount(total) {
+        if (total <= 0) {
+            window.__feedVisibleCount = 0;
+            return 0;
+        }
+        var v = window.__feedVisibleCount;
+        if (v == null || typeof v !== 'number' || v < 1 || !isFinite(v)) {
+            window.__feedVisibleCount = Math.min(FEED_PAGE_SIZE, total);
+            return window.__feedVisibleCount;
+        }
+        v = Math.min(v, total);
+        if (v < FEED_PAGE_SIZE && total >= FEED_PAGE_SIZE) {
+            v = FEED_PAGE_SIZE;
+        }
+        window.__feedVisibleCount = v;
+        return v;
+    }
+
+    function isNearDocumentBottom(thresholdPx) {
+        var doc = document.documentElement;
+        var scrollTop = window.scrollY != null ? window.scrollY : doc.scrollTop;
+        var viewport = window.innerHeight || doc.clientHeight;
+        var full = doc.scrollHeight;
+        return scrollTop + viewport >= full - thresholdPx;
+    }
+
     window.renderPosts = function renderPosts() {
         const contentArea = document.querySelector('.content-area');
         var data = window.NatesData;
         if (!contentArea || !data || !Array.isArray(data.posts)) return;
 
+        var totalAll = data.posts.length;
+        var visible = resolveFeedVisibleCount(totalAll);
+        var postsToRender = data.posts.slice(0, visible);
+
+        if (typeof window.__natespaceTearDownCommentListeners === 'function') {
+            window.__natespaceTearDownCommentListeners();
+        }
+
         contentArea.querySelectorAll('article.post').forEach(function (el) {
             el.remove();
         });
 
-        data.posts.forEach(function (post) {
+        postsToRender.forEach(function (post) {
             const article = document.createElement('article');
             // NOTE: no scroll-reveal — IO often never adds .visible for re-rendered feed cards (opacity stays 0).
             article.className = 'glass-panel post';
@@ -183,4 +219,25 @@
             }
         });
     };
+
+    var feedScrollScheduled = false;
+    function onFeedWindowScroll() {
+        if (feedScrollScheduled) return;
+        feedScrollScheduled = true;
+        requestAnimationFrame(function () {
+            feedScrollScheduled = false;
+            if (!isNearDocumentBottom(SCROLL_BOTTOM_PX)) return;
+            var data = window.NatesData;
+            if (!data || !Array.isArray(data.posts)) return;
+            var total = data.posts.length;
+            var v = window.__feedVisibleCount;
+            if (v == null || v >= total) return;
+            window.__feedVisibleCount = Math.min(v + FEED_PAGE_SIZE, total);
+            if (typeof window.renderPosts === 'function') {
+                window.renderPosts();
+            }
+        });
+    }
+
+    window.addEventListener('scroll', onFeedWindowScroll, { passive: true });
 })();

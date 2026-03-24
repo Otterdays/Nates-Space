@@ -2,6 +2,20 @@
 
 # Nate's Space - Scratchpad
 
+## Session: 2026-03-23 (platforms page + site link)
+
+### Last actions
+- [x] **`platforms.html`**: indie/music platform list (mobile cards); nav **Platforms**; profile link **natee.vercel.app** + **All platforms**; **CHANGELOG v1.2.9**, cache **v=129**.
+
+---
+
+## Session: 2026-03-23 (feed pagination)
+
+### Last actions
+- [x] **Infinite scroll**: show 5 posts, load +5 at document bottom; tear down comment listeners on re-render hook; **CHANGELOG v1.2.8**, cache **v=128**.
+
+---
+
 ## Session: 2026-03-23 (likes + comments)
 
 ### Last actions
