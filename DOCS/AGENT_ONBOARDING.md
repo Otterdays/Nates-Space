@@ -54,7 +54,7 @@ Then branch by task:
 | `auth/api-key-not-valid` | Typo in `apiKey`; or `appId` / `messagingSenderId` mismatch vs Firebase Console | Copy web config exactly from **Project settings → Your apps** |
 | `auth/configuration-not-found` | Google sign-in (or Auth) not enabled in Firebase Console | Authentication → Sign-in method → Google ON |
 | `auth/unauthorized-domain` | Host not allowlisted | Authentication → Settings → **Authorized domains** |
-| Posted toast but **no posts on page**; data exists in Firestore | **CSS:** feed cards used `scroll-reveal` without `.visible` after re-render (fixed v1.2.4+). Or snapshot error (check console). | [debugs/debug_2026-03-23_firebase-feed-feed-visibility.md](./debugs/debug_2026-03-23_firebase-feed-feed-visibility.md) |
+| Posted toast but **no posts on page**; data exists in Firestore | **Missing `window.NatesData`:** `renderPosts()` bails on `!window.NatesData` (fixed v1.2.6). **Or CSS:** `scroll-reveal` without `.visible` (fixed v1.2.4+). **Or** Firestore snapshot error (console). | [debugs/debug_2026-03-23_firebase-feed-feed-visibility.md](./debugs/debug_2026-03-23_firebase-feed-feed-visibility.md) **Issue G / E** |
 | `permission-denied` on write | `firestore.rules` UID placeholder or wrong user | [FIREBASE_GUIDE.md](./FIREBASE_GUIDE.md) — User UID |
 | Composer always visible when logged out | Old deploy before composer gating | [`js/firebase-feed.js`](../js/firebase-feed.js) + `postComposer` `hidden` |
 | Music list wrong / missing tracks | `music-files.js` out of sync with `assets/music/` | [MUSIC_GUIDE.md](./MUSIC_GUIDE.md) — `scan-music.mjs --apply` |

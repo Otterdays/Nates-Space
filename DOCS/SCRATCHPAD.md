@@ -2,6 +2,16 @@
 
 # Nate's Space - Scratchpad
 
+## Session: 2026-03-23 (Issue G — `window.NatesData`)
+
+### Root cause
+- `renderPosts()` required `window.NatesData`; `data.js` only had `const NatesData` → early return, empty feed despite Firestore writes.
+
+### Last actions
+- [x] `assets/data.js`: `window.NatesData = NatesData;` — **CHANGELOG v1.2.6**, cache **v=126**, debug log **Issue G**, AGENT_ONBOARDING triage row, SUMMARY/README badge.
+
+---
+
 ## Session: 2026-03-23 (Agent onboarding + debug log)
 
 ### Last actions

@@ -4,6 +4,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.6] - 2026-03-23
+
+### Fixed
+- **Feed never rendered / Firestore posts invisible**: `assets/data.js` used `const NatesData` without `window.NatesData`; `js/posts.js` returns early on `!window.NatesData` (while `app-init` still called `renderPosts()` via global lexical `NatesData`). Added `window.NatesData = NatesData`. Cache `v=126`.
+
+### Changed
+- **DOCS**: Append **Issue G** to `debugs/debug_2026-03-23_firebase-feed-feed-visibility.md`; triage row in `AGENT_ONBOARDING.md`.
+
 ## [1.2.5] - 2026-03-23
 
 ### Added

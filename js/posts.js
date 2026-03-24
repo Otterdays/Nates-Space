@@ -14,13 +14,14 @@
 
     window.renderPosts = function renderPosts() {
         const contentArea = document.querySelector('.content-area');
-        if (!contentArea || !window.NatesData || !Array.isArray(NatesData.posts)) return;
+        var data = window.NatesData;
+        if (!contentArea || !data || !Array.isArray(data.posts)) return;
 
         contentArea.querySelectorAll('article.post').forEach(function (el) {
             el.remove();
         });
 
-        NatesData.posts.forEach(function (post) {
+        data.posts.forEach(function (post) {
             const article = document.createElement('article');
             // NOTE: no scroll-reveal — IO often never adds .visible for re-rendered feed cards (opacity stays 0).
             article.className = 'glass-panel post';

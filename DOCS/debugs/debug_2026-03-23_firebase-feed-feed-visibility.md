@@ -73,6 +73,16 @@ This document records **what happened, in order**, so agents don’t re-diagnose
 
 ---
 
+## Issue G — Still no feed posts; Firestore writes succeed (“Posted!”)
+
+- **When:** After Issue E (`scroll-reveal`) fix; user still saw empty feed; **Sign in** / **Sign out** irrelevant to read path.
+- **Symptom:** No `article.post` nodes (or feed column empty). **`Posted!` toast** still appeared; documents visible in Firestore **Data** tab.
+- **Root cause:** [`assets/data.js`](../../assets/data.js) declared `const NatesData = { … }` but **`window.NatesData` was never set**. [`js/posts.js`](../../js/posts.js) `renderPosts()` starts with `if (!contentArea || !window.NatesData || !Array.isArray(NatesData.posts)) return;` — the `!window.NatesData` branch **always exited** before drawing. [`js/app-init.js`](../../js/app-init.js) used `typeof NatesData !== 'undefined'`, which can be true for the global lexical binding, so it **called** `renderPosts()` but nothing rendered.
+- **Resolution:** Append `window.NatesData = NatesData;` at end of `assets/data.js` (see trace comment). Ship with cache bump **v=126** on `index.html` assets.
+- **Quick check in DevTools:** `!!window.NatesData` must be **true**; `document.querySelectorAll('article.post').length` should be **> 0** after load.
+
+---
+
 ## Useful file map (this feature)
 
 | File | Role |

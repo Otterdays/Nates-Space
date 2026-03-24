@@ -16,7 +16,7 @@ NatesSpace/
 ├── .nojekyll           # Prevents Jekyll processing on GitHub Pages
 ├── .gitignore          # Ignores node_modules, *.wav, *.exe, etc.
 ├── assets/
-│   ├── data.js         # NatesData: gallery `images`, `posts` (not music)
+│   ├── data.js         # NatesData + `window.NatesData` (feed/gallery scripts read `window`)
 │   ├── *.jpg, *.mp4    # Media (paths referenced from HTML/data.js)
 │   └── music/          # Audio files; filenames synced into `js/music-files.js` via scan (see MUSIC_GUIDE.md)
 ├── tools/

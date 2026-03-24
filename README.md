@@ -2,7 +2,7 @@
 
 A premium personal portal and social-style portfolio. Built with pure HTML5, CSS3, and Vanilla JavaScript—no frameworks, no build steps, just pure performance.
 
-![Version](https://img.shields.io/badge/version-1.2.5-00d4aa)
+![Version](https://img.shields.io/badge/version-1.2.6-00d4aa)
 ![No Dependencies](https://img.shields.io/badge/dependencies-0-success)
 
 ## ✨ Latest Features
